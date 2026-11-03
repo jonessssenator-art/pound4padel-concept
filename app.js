@@ -112,21 +112,64 @@ document.querySelectorAll('.questions details').forEach(details => {
   });
 });
 
-const hero = document.querySelector('.hero');
-const heroPhoto = document.querySelector('.hero-photo');
-let frame = 0;
-function updateDepth() {
-  frame = 0;
-  if (motion.matches || innerWidth < 700) { heroPhoto.style.transform = ''; return; }
-  const bounds = hero.getBoundingClientRect();
-  if (bounds.bottom < 0 || bounds.top > innerHeight) return;
-  const progress = Math.max(0, Math.min(1, -bounds.top / bounds.height));
-  heroPhoto.style.transform = `translateY(${progress * 55}px) scale(1.09)`;
-}
-function requestDepth() { if (!frame) frame = requestAnimationFrame(updateDepth); }
-addEventListener('scroll', requestDepth, { passive: true });
-addEventListener('resize', requestDepth, { passive: true });
 function stopMotion() { running.forEach(animation => animation.cancel()); running.clear(); }
-motion.addEventListener('change', () => { if (motion.matches) stopMotion(); requestDepth(); });
+motion.addEventListener('change', () => { if (motion.matches) stopMotion(); });
 document.addEventListener('visibilitychange', () => { if (document.hidden) stopMotion(); });
-requestDepth();
+
+const hero = document.querySelector('.hero');
+const video = document.querySelector('.hero-video');
+const videoToggle = document.querySelector('.video-toggle');
+const videoLabel = videoToggle.querySelector('span');
+const videoIcon = videoToggle.querySelector('path');
+let userPaused = false;
+let userRequested = false;
+let inView = true;
+let videoFailed = false;
+let playPending = false;
+const connection = navigator.connection;
+function wantsVideo() {
+  return !videoFailed && !userPaused && inView && !document.hidden &&
+    (userRequested || (!motion.matches && !connection?.saveData));
+}
+function renderVideoControl() {
+  const playing = !video.paused;
+  videoLabel.textContent = playing ? 'Пауза' : 'Смотреть видео';
+  videoToggle.setAttribute('aria-label', playing ? 'Приостановить фоновое видео' : 'Включить фоновое видео');
+  videoIcon.setAttribute('d', playing ? 'M8 5v14M16 5v14' : 'M8 5l11 7-11 7V5Z');
+}
+async function syncVideo() {
+  if (!wantsVideo()) { video.pause(); renderVideoControl(); return; }
+  if (playPending || !video.paused) return;
+  if (!video.getAttribute('src')) video.src = video.dataset.src;
+  video.muted = true;
+  playPending = true;
+  try {
+    await video.play();
+    if (!wantsVideo()) video.pause();
+  } catch { /* Autoplay can be blocked; keep the photograph and manual play control. */ }
+  finally { playPending = false; renderVideoControl(); }
+}
+videoToggle.hidden = false;
+videoToggle.addEventListener('click', () => {
+  if (!video.paused || playPending) { userPaused = true; video.pause(); }
+  else { userPaused = false; userRequested = true; }
+  syncVideo();
+});
+video.addEventListener('playing', () => { hero.classList.add('has-video'); renderVideoControl(); });
+video.addEventListener('pause', renderVideoControl);
+video.addEventListener('error', () => {
+  videoFailed = true;
+  hero.classList.remove('has-video');
+  videoToggle.hidden = true;
+});
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(entries => {
+    inView = entries[0].isIntersecting;
+    syncVideo();
+  }, { threshold: .05 }).observe(hero);
+}
+motion.addEventListener('change', () => { userRequested = false; syncVideo(); });
+connection?.addEventListener('change', syncVideo);
+document.addEventListener('visibilitychange', syncVideo);
+renderVideoControl();
+syncVideo();
