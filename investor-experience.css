@@ -76,3 +76,18 @@ html[data-input=keyboard] .pdf-reader,html[data-input=keyboard] .pdf-reader::bac
 @media(prefers-reduced-motion:reduce){.pdf-reader,.pdf-reader::backdrop,.document-preview>img,.document-preview-action,.reader-button,.reader-thumbnails button,.investors-page .page-jumps a,.investors-page .investor-plan img,.investors-page .investor-plan>button>span,.investors-page .investor-actions a,.investors-page .reader-launch{transition:none!important;transform:none!important}}
 
 .reader-viewport>img[hidden]{display:none}
+
+/* Investor page: consistently soft media, panels and controls. */
+.investors-page{--investor-radius:24px;--investor-radius-small:16px}
+.investors-page :is(.investor-panel>figure>img,.investor-plan>button,.investor-document,.comparison-scroll,.document-preview,.image-dialog,.pdf-reader){border-radius:var(--investor-radius)}
+.investors-page :is(.investor-plan>button,.document-preview,.image-dialog,.pdf-reader){overflow:hidden}
+.investors-page :is(.investor-plan img,.image-dialog>img,.reader-viewport>img){border-radius:var(--investor-radius-small)}
+.investors-page :is(.reader-select-label select,.reader-thumbnails button,.reader-thumbnails img,.gallery-thumbs button,.gallery-thumbs img,.document-contents a){border-radius:12px}
+.investors-page :is(.ui-button,.reader-button,.investor-options,.investor-options>button,.page-jumps a,.investor-plan>button>span,.menu){border-radius:999px}
+@media(max-width:650px){
+ .investors-page{--investor-radius:20px;--investor-radius-small:14px}
+ .investors-page .pdf-reader{width:calc(100vw - 16px);height:calc(100dvh - 16px);border-radius:20px}
+ .investors-page .header nav{border-radius:0 0 20px 20px}
+}
+.investors-page .reader-viewport>img{width:auto;height:auto;max-width:100%;max-height:100%}
+.investors-page .reader-viewport.is-zoomed>img{width:max(160%,1200px);height:auto;max-width:none;max-height:none}
