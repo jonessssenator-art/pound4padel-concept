@@ -1,0 +1,103 @@
+/* Five destinations, one visual system. Keep this layer limited to page composition. */
+.header nav a[aria-current=page]{color:var(--ball-accent);text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px}
+.header nav{gap:24px}
+.header .brand{width:140px}
+.breadcrumbs{display:flex;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:#c8d0d4;margin-bottom:32px}
+.breadcrumbs a{text-decoration:underline;text-underline-offset:4px}
+.page-intro{padding:48px var(--page-gutter) 48px}
+.page-intro h1{font-size:clamp(60px,7.2vw,104px);line-height:1.08;letter-spacing:-.02em;max-width:18ch;text-wrap:balance}
+.page-intro>p{max-width:62ch;margin-top:24px;font-size:18px;line-height:1.75;color:#c8d0d4}
+.page-jumps{display:flex;gap:24px;flex-wrap:wrap;margin-top:32px}
+.page-jumps a{min-height:44px;display:inline-flex;align-items:center;font-size:14px;text-decoration:underline;text-underline-offset:6px}
+.page-wide-photo{margin:0 var(--page-gutter);overflow:hidden}
+.page-wide-photo>button{display:block;padding:0;width:100%;cursor:zoom-in}
+.page-wide-photo img{width:100%;height:auto;aspect-ratio:1.8;object-fit:cover;object-position:center 40%;border-radius:12px}
+.page-wide-photo figcaption{font-size:13px;color:#c8d0d4;margin-top:16px}
+.women-lead img{aspect-ratio:1.8;object-position:center}
+.teaser-copy{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.teaser-copy p{font-size:16px;line-height:1.7;max-width:38ch}
+.teaser-photo{display:block;overflow:hidden;border-radius:12px}
+.teaser-photo img{width:100%;height:auto;aspect-ratio:2.15;object-fit:cover;object-position:center 42%}
+.home-women{background:#111f29}
+.home-women{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center}
+.home-women .section-heading{display:block;order:2;margin:0}
+.home-women .teaser-copy{margin-top:32px}
+.home-women .teaser-photo{order:1}
+.home-women .teaser-photo img{aspect-ratio:1.15;object-fit:cover}
+.home-women .teaser-photo img{aspect-ratio:2;object-position:center 46%}
+.home-products{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.home-products>a{position:relative;display:block;height:400px;background:#111f29;overflow:hidden;border-radius:12px}
+.home-products>a:first-child{background:#e2e8ec;color:#183269}
+.home-products img{width:100%;height:100%;object-fit:contain;padding:16px 16px 56px}
+.home-products span{position:absolute;bottom:24px;left:24px;font-size:16px;font-weight:600}
+.home-investors{background:#183269}
+.home-investors{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
+.home-investors .section-heading{display:block;margin:0}
+.home-investors .teaser-copy{margin-top:24px}
+.home-investors .section-heading h2{font-size:clamp(42px,4.8vw,72px)}
+.investor-teaser-image{display:block;overflow:hidden;border-radius:12px;background:#f3f0e7}
+.investor-teaser-image img{width:100%;height:420px;object-fit:contain}
+.home-page .home-club{padding-top:56px}
+.reading-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:64px}
+.reading-section h2,.packing h2,.page-note h2{font-size:clamp(42px,4.8vw,72px);line-height:1.14}
+.reading-rows article+article{margin-top:32px;padding-top:32px;border-top:1px solid #f3f0e733}
+.reading-rows h3{font-size:30px;line-height:1.25;margin-bottom:16px}
+.reading-rows p{font-size:16px;line-height:1.8;color:#c8d0d4;max-width:62ch}
+.inline-link{text-decoration:underline;text-underline-offset:5px;white-space:nowrap}
+.packing{background:#111f29}
+.packing dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin:40px 0 0}
+.packing dt{font-family:Oswald,sans-serif;font-size:30px;line-height:1.3;margin-bottom:16px}
+.packing dd{margin:0;color:#c8d0d4;line-height:1.75;font-size:15px}
+.page-note{background:#183269;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.page-note p{max-width:50ch;line-height:1.8;margin-bottom:24px}
+.equipment-page .equipment{padding-top:0}
+.equipment-page .racket-intro h3{font-size:clamp(36px,3.8vw,58px)}
+.equipment-page .reading-section{background:#111f29}
+.investors-page{background:#f3f0e7;color:#183269}
+.investors-page .header,.investors-page .site-footer{background:#0c1922;color:#f3f0e7}
+.investors-page .page-intro>p,.investors-page .breadcrumbs{color:#183269}
+.investors-page .investors{padding-top:24px;padding-bottom:64px}
+.investors-page .page-intro{padding-bottom:24px}
+.investors-page .page-intro h1{font-size:clamp(52px,6.4vw,88px)}
+.investors-page .investors-heading h2{font-size:clamp(40px,4vw,60px)}
+.investors-page .investor-panel{row-gap:40px}
+.investor-plan{grid-column:1/-1}
+.investor-plan h3{font-size:30px;margin-bottom:24px}
+.investor-plan>button{position:relative;display:block;padding:24px 24px 72px;background:white;border-radius:12px;width:100%;color:#183269;cursor:zoom-in}
+.investor-panel .investor-plan img{aspect-ratio:auto;width:100%;height:auto;object-fit:contain;background:white}
+.investor-plan>button>span{position:absolute;right:24px;bottom:20px;min-height:44px;padding:10px 20px;font-size:13px;border:1px solid #18326966;border-radius:999px}
+.investors-page .reading-section{background:#e8e4d9}
+.investors-page .reading-rows p{color:#183269}
+.investors-page .reading-rows article+article{border-color:#18326933}
+.comparison{background:#e8e4d9}
+.comparison-scroll{overflow-x:auto;scrollbar-color:#183269 #e8e4d9;border-radius:12px;background:#f3f0e7}
+.comparison table{width:100%;border-collapse:collapse;text-align:left;font-size:15px;font-variant-numeric:tabular-nums lining-nums}
+.comparison caption{text-align:left;font-size:16px;font-weight:600;padding:24px}
+.comparison th,.comparison td{padding:20px 24px;border-top:1px solid #18326922;line-height:1.6}
+.comparison thead th{font-weight:600;background:#183269;color:#f3f0e7}
+.comparison tbody th{font-weight:500;width:43%}
+.comparison td,.comparison thead th:not(:first-child){text-align:right;white-space:nowrap}
+.table-note{max-width:80ch;font-size:13px;line-height:1.75;margin-top:24px}
+.area-details{margin-top:16px;font-size:14px;max-width:80ch}
+.area-details summary{cursor:pointer;min-height:44px;padding:10px 0;text-decoration:underline;text-underline-offset:5px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.area-details summary::-webkit-details-marker{display:none}
+.area-details summary::after{content:'+';font-size:22px;line-height:1}
+.area-details[open] summary::after{transform:rotate(45deg)}
+.table-scroll-hint{display:none}
+.area-details p{margin-top:12px;line-height:1.75}
+.investor-download-section .investor-document{margin-top:0}
+.investors-page :focus-visible{outline-color:#1448a3}
+.investors-page .header :focus-visible,.investors-page .site-footer :focus-visible{outline-color:#deeb7c}
+.site-footer{display:grid;grid-template-columns:180px 1fr auto;gap:24px 40px;align-items:center}
+.site-footer nav{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:16px 24px;font-size:13px}
+.site-footer nav a{padding:10px 0;min-height:44px;display:inline-flex;align-items:center}
+.site-footer p{grid-row:2;grid-column:1/-1;font-size:12px;width:auto;max-width:none;order:0}
+.site-footer>a:last-child{margin:0;font-size:13px;padding:10px 0;min-height:44px}
+@media(hover:hover) and (pointer:fine){.breadcrumbs a:hover,.page-jumps a:hover,.inline-link:hover,.site-footer nav a:hover{color:var(--ball-accent)}.investors-page .breadcrumbs a:hover,.investors-page .page-jumps a:hover{color:#1448a3}.teaser-photo:focus-visible,.home-products>a:focus-visible{outline-offset:5px}}
+@media(max-width:1050px){.header nav{gap:16px}.header .brand{width:125px}.page-intro{padding-top:32px}.reading-section{gap:32px}.packing dl{grid-template-columns:1fr 1fr}.home-products>a{height:340px}.investor-teaser-image img{height:340px}.site-footer{grid-template-columns:140px 1fr auto;column-gap:24px}}
+@media(min-width:651px) and (max-width:850px){.header nav{font-size:12px;gap:12px}.header .brand{width:115px}.header{gap:12px}.header .ui-button{font-size:11px;padding-inline:12px}.site-footer nav{gap:12px}.site-footer{grid-template-columns:120px 1fr auto;column-gap:16px}}
+@media(max-width:650px){.header .brand{width:110px}.header nav{gap:4px}.page-intro{padding:24px var(--page-gutter) 32px}.breadcrumbs{font-size:12px;gap:10px;margin-bottom:24px}.page-intro h1{font-size:52px;line-height:1.12;max-width:15ch}.page-intro>p{font-size:15px;line-height:1.75;margin-top:24px}.page-jumps{margin-top:24px;gap:4px 20px}.page-jumps a{font-size:13px}.page-wide-photo img,.women-lead img{aspect-ratio:auto;object-fit:contain}.page-wide-photo figcaption{font-size:12px}.teaser-copy{margin-top:24px;gap:20px}.teaser-copy p{font-size:15px}.teaser-photo img,.home-women .teaser-photo img{aspect-ratio:1.5}.home-products{gap:16px}.home-products>a{height:260px}.home-products img{padding:8px 8px 48px}.home-products span{font-size:13px;left:16px;bottom:16px}.home-investors .section-heading h2{font-size:42px}.investor-teaser-image img{height:auto;aspect-ratio:1.5}.home-page .home-club{padding-top:40px}.reading-section{grid-template-columns:1fr;gap:32px}.reading-section h2,.packing h2,.page-note h2{font-size:42px}.reading-rows h3{font-size:28px}.reading-rows p{font-size:15px}.reading-rows article+article{margin-top:24px;padding-top:24px}.packing dl{grid-template-columns:1fr 1fr;gap:32px 24px;margin-top:32px}.packing dt{font-size:26px;margin-bottom:12px}.packing dd{font-size:14px}.page-note{grid-template-columns:1fr;gap:24px}.page-note p{font-size:15px}.investors-page .investors-heading h2{font-size:40px}.investors-page .investor-panel{gap:24px}.investors-page .investor-description{min-height:0}.investor-plan h3{font-size:28px;margin-bottom:20px}.investor-plan>button{padding:12px 12px 72px;border-radius:8px}.investor-plan>button>span{right:16px;bottom:16px;font-size:12px;padding-inline:16px}.comparison table{font-size:13px;min-width:580px}.comparison caption{padding:20px}.comparison th,.comparison td{padding:16px 20px}.table-note{font-size:12px}.site-footer{grid-template-columns:1fr auto;gap:24px}.site-footer>a:first-child{grid-column:1;grid-row:1;width:115px}.site-footer nav{grid-column:1/-1;grid-row:2;justify-content:flex-start;gap:4px 24px}.site-footer p{grid-column:1/-1;grid-row:3}.site-footer>a:last-child{grid-column:2;grid-row:1}}
+@media(max-width:380px){.page-intro h1{font-size:46px}.home-products{grid-template-columns:1fr}.home-products>a{height:300px}.packing dl{grid-template-columns:1fr}}
+@media(min-width:651px){.home-women .teaser-photo img{aspect-ratio:1.5}.home-investors .investor-teaser-image img{height:auto;aspect-ratio:1.5}}
+@media(max-width:650px){.home-women,.home-investors{display:flex;flex-direction:column;align-items:stretch;gap:24px}.home-women .section-heading{order:0}.home-women .teaser-photo{order:1}.home-women .teaser-copy,.home-investors .teaser-copy{margin-top:24px}.investors-page .page-intro h1{font-size:48px}}
+@media(max-width:650px){.table-scroll-hint{display:block;font-size:12px;margin-bottom:16px}}
