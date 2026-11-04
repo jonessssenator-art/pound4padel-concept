@@ -1,0 +1,44 @@
+/* Same control and motion vocabulary as the investor experience. */
+.site-icon{width:21px;height:21px;display:block;flex:none}
+.site-experience .page-jumps{gap:10px}
+.site-experience .page-jumps a{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;min-height:44px;border:1px solid #f3f0e74d;border-radius:999px;text-decoration:none;transition:background-color 160ms ease,color 160ms ease,transform 160ms var(--ease-out)}
+.site-experience .page-jumps .site-icon{width:19px;height:19px}
+.site-experience .game-dock a,.site-experience .tabs>button{display:flex;align-items:center;justify-content:center;gap:8px}
+.site-experience .game-dock .site-icon,.site-experience .tabs .site-icon{width:18px;height:18px}
+.site-experience .ui-button .site-icon{width:20px;height:20px}
+.site-experience .teaser-photo img,.site-experience .home-products img,.site-experience .investor-teaser-image img,.site-experience .page-wide-photo img,.site-experience .product-window img{transition:transform 220ms var(--ease-out)}
+.site-experience .page-wide-photo>button,.site-experience .product-window>button{position:relative;overflow:hidden;border-radius:12px}
+.media-action{position:absolute;right:24px;bottom:24px;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:#183269;color:#f3f0e7;font-size:13px;opacity:0;transform:translateY(8px);transition:opacity 160ms ease,transform 220ms var(--ease-out);pointer-events:none}
+.site-experience .zoom-image:focus-visible .media-action{opacity:1;transform:none}
+.site-experience .packing dt{display:flex;align-items:center;gap:12px}
+.site-experience .packing .site-icon{width:26px;height:26px}
+.site-experience .questions summary{transition:color 160ms ease}
+.site-experience .questions summary>span{display:grid;place-items:center;flex:none;width:32px;height:32px;border:1px solid #f3f0e74d;border-radius:50%;font-size:22px;line-height:1}
+.site-experience .questions details[open] summary{color:#e0ec87}
+.site-experience .questions details[open] summary>span{border-color:#e0ec87}
+.site-experience .view-option{transition:background-color 160ms ease,color 160ms ease,transform 160ms var(--ease-out),outline-color 160ms ease}
+.site-experience .swatches button{position:relative}
+.site-experience .swatches button[aria-pressed=true]::after{content:'';position:absolute;inset:6px;border:1px solid currentColor;border-radius:50%;color:#183269}
+.site-experience .swatches .blue[aria-pressed=true]::after{color:#fff}
+.site-experience .detail-note{transform-origin:65% 0}
+.site-experience .ui-button:active,.site-experience .page-jumps a:active,.site-experience .game-dock a:active,.site-experience .view-option:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){
+.site-experience .ui-button:hover{transform:translateY(-2px)}
+.site-experience .page-jumps a:hover{background:#f3f0e7;color:#183269;transform:translateY(-2px)}
+.site-experience .game-dock a:hover{transform:translateY(-2px)}
+.site-experience .teaser-photo:hover img,.site-experience .home-products>a:hover img,.site-experience .investor-teaser-image:hover img,.site-experience .page-wide-photo>button:hover img,.site-experience .product-window>button:hover img{transform:scale(1.025)}
+.site-experience .zoom-image:hover .media-action{opacity:1;transform:none}
+.site-experience .questions summary:hover{color:#e0ec87}
+.site-experience .view-option:hover{transform:translateY(-2px)}
+}
+@media(max-width:650px){
+.site-experience .page-jumps a{font-size:12px;padding:10px 12px;gap:8px}
+.site-experience .game-dock a{flex-direction:column;gap:7px}
+.site-experience .game-dock{padding-top:14px;padding-bottom:14px}
+.site-experience .header-cta .site-icon{display:none}
+.site-experience .tabs>button{gap:6px;font-size:11px}.site-experience .tabs .site-icon{width:16px;height:16px}
+.site-experience .media-action{opacity:1;transform:none;right:16px;bottom:16px;padding:10px 14px;font-size:12px}
+.site-experience .packing dt{gap:10px}.site-experience .packing .site-icon{width:23px;height:23px}
+}
+html[data-input=keyboard] .site-experience .media-action{transition:none}
+@media(prefers-reduced-motion:reduce){.site-experience .ui-button,.site-experience .page-jumps a,.site-experience .game-dock a,.site-experience .view-option,.site-experience .media-action,.site-experience .teaser-photo img,.site-experience .home-products img,.site-experience .investor-teaser-image img,.site-experience .page-wide-photo img,.site-experience .product-window img{transition:none!important;transform:none!important}}
