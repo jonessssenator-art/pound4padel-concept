@@ -19,3 +19,6 @@ User selected the rendered direction-one proposal. Full-width approved Islam her
 
 ## Mandatory user preference
 No arrow icons or arrow glyphs in any website buttons, links, navigation or decoration. Use text controls without arrows. Do not add user-facing references to AI, generation, synthetic imagery or related production notes, including alt text and metadata. These preferences supersede earlier footer-disclosure guidance. Preserve accurate functionality notices such as unavailable booking.
+
+## Selected typography
+User chose option 3: self-hosted Oswald weight 500 for headings and Manrope for body, navigation and buttons. typography.css overrides the previous Involve typography. No arrow icons or production notes.
