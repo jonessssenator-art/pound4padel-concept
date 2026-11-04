@@ -16,3 +16,6 @@ Game-format section: replaced the rejected flat court diagram with a single full
 
 ## Selected direction 1, November 2026
 User selected the rendered direction-one proposal. Full-width approved Islam hero, dark #0c1922 surroundings, cream type and ball-derived lime actions. Follow hero with a 1.7:1 photographic community/tournament pair; photos open in the existing image dialog. Real supplied documentary photos also replace the speculative architecture in the club section. Dark women's-Friday section retains its dedicated content and group image. Original equipment remains complete and uncropped with existing color/view controls. Existing motion and reduced-motion support retained. No new booking integration or opening-date claims; the supplied opening photos supersede the old upcoming-opening notice. Layout overrides are isolated in direction-one.css. Responsive browser checks at 1400 and 390 pixels.
+
+## Mandatory user preference
+No arrow icons or arrow glyphs in any website buttons, links, navigation or decoration. Use text controls without arrows. Do not add user-facing references to AI, generation, synthetic imagery or related production notes, including alt text and metadata. These preferences supersede earlier footer-disclosure guidance. Preserve accurate functionality notices such as unavailable booking.
