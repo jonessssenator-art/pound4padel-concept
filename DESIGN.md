@@ -11,3 +11,5 @@ Motion: one staggered hero entrance, subtle scroll response in the ball scene, u
 Refinement after user review: product windows use fixed responsive frames and object-fit: contain, never crop the kit. Added blue kit and original front/profile racket view, product image dialog, detail hotspot, alternate architecture angle. Hero and ball imagery share a navy edge fade. Product still-life uses the same source racket and plain balls. Scroll response, controlled rally, product reveal and short view-change animations respect reduced motion. No other generated people used.
 
 Racket correction: rejected generated equipment-scene.png. Main product scene now uses original racket-front.png from brandbook, showing front and profile without crop or distortion.
+
+Game-format section: replaced the rejected flat court diagram with a single full-width photographic court scene. Integrated keyboard-accessible format tabs and distinct CTA button. Tab changes animate copy and restrained crop/zoom; reduced motion disables camera motion. Empty court is an edited version of the supplied court photograph. No added athlete imagery.
