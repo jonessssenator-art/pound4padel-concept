@@ -22,3 +22,6 @@ No arrow icons or arrow glyphs in any website buttons, links, navigation or deco
 
 ## Selected typography
 User chose option 3: self-hosted Oswald weight 500 for headings and Manrope for body, navigation and buttons. typography.css overrides the previous Involve typography. No arrow icons or production notes.
+
+## Interactive components, November 2026
+Removed solid lime rectangular CTAs. Use cream or outlined rounded controls with 160ms press feedback and reduced-motion support. Hero has a compact three-choice game dock, selecting and focusing the matching game tab. Game tabs use a segmented selected state. Club photo viewer includes four supplied club photos, caption, thumbnails, previous/next text controls, keyboard navigation and horizontal touch swipe. Equipment stays in the same viewer without gallery controls. No arrow glyphs or decorative counters. Implemented in interactions.css and app.js.
