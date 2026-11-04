@@ -2,7 +2,7 @@
 const investorTabs = [...document.querySelectorAll('.investor-options [role="tab"]')];
 function selectInvestorTab(selected, animate = false) {
   if (selected.getAttribute("aria-selected") === "true") return;
-  document.querySelectorAll(".investor-panel").forEach(panel => panel.getAnimations().forEach(a => a.cancel()));
+  document.querySelectorAll(".investor-panel").forEach(panel => panel.getAnimations({subtree:true}).forEach(a => a.cancel()));
   investorTabs.forEach(tab => {
     const active = tab === selected;
     tab.setAttribute('aria-selected', String(active));
@@ -11,7 +11,9 @@ function selectInvestorTab(selected, animate = false) {
   });
   const panel = document.getElementById(selected.getAttribute("aria-controls"));
   if (animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    panel.animate([{opacity:.55},{opacity:1}], {duration:180,easing:"cubic-bezier(.23,1,.32,1)"});
+    const easing = getComputedStyle(document.documentElement).getPropertyValue('--ease-out').trim() || 'cubic-bezier(.23,1,.32,1)';
+    panel.querySelector('figure').animate([{opacity:.45,transform:'scale(.98)'},{opacity:1,transform:'scale(1)'}], {duration:220,easing});
+    panel.querySelector('.investor-description').animate([{opacity:.4,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}], {duration:220,easing});
   }
 }
 investorTabs.forEach((tab, index) => {
