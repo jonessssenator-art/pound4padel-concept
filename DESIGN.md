@@ -25,3 +25,8 @@ User chose option 3: self-hosted Oswald weight 500 for headings and Manrope for 
 
 ## Interactive components, November 2026
 Removed solid lime rectangular CTAs. Use cream or outlined rounded controls with 160ms press feedback and reduced-motion support. Hero has a compact three-choice game dock, selecting and focusing the matching game tab. Game tabs use a segmented selected state. Club photo viewer includes four supplied club photos, caption, thumbnails, previous/next text controls, keyboard navigation and horizontal touch swipe. Equipment stays in the same viewer without gallery controls. No arrow glyphs or decorative counters. Implemented in interactions.css and app.js.
+
+
+## Component finish, November 2026
+Shared styles live in components.css and components.js. Preserve the current hero assets and copy when refining controls. Content width caps at 1344px; page gutters are 20px on mobile, 32px on tablet, and at least 32px on desktop. Use the 8/16/24/32/48/64/80px spacing scale. Primary and secondary actions share ui-button: 48px minimum height, 24px horizontal padding, 14px Manrope. Compact controls are 44px high. Media corners are 12px. Segmented controls use ui-segmented with one sliding indicator, matching keyboard-accessible tab semantics. Numerals use lining figures; investor selectors and PDF metadata use tabular figures.
+Pointer feedback takes 160ms; state changes take 180-220ms with the existing ease-out curve. Native dialogs and FAQ disclosure retain keyboard and reduced-motion behavior. Avoid repeated scroll entrances on reading content. Mobile gallery uses a stable 3:2 image frame without unnecessary vertical space. Keep section headlines and their supporting copy aligned to the corresponding content columns.
