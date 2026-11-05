@@ -17,17 +17,16 @@ reduced.addEventListener('change',()=>{if(balls)balls.style.transform='none';});
 // Product controls preserve complete, uncropped source images.
 const viewer=document.querySelector('.image-dialog');let viewerTrigger;
 const galleryItems=[
- {src:'assets/club-interior/584A3168.webp',caption:'Падел-корты'},
- {src:'assets/club-interior/584A3247.webp',caption:'Вид на корты с галереи'},
  {src:'assets/club-interior/584A3126.webp',caption:'Вход в клуб'},
  {src:'assets/club-interior/584A3202.webp',caption:'Экипировка в клубе'},
  {src:'assets/club-interior/584A3144.webp',caption:'Лестница к кортам'},
+ {src:'assets/club-interior/584A3168.webp',caption:'Падел-корты'},
  {src:'assets/club-interior/584A3156.webp',caption:'Галерея вдоль кортов'},
+ {src:'assets/club-interior/584A3247.webp',caption:'Вид на корты с галереи'},
  {src:'assets/club-interior/584A3185.webp',caption:'Места для отдыха у корта'},
  {src:'assets/club-interior/584A3217.webp',caption:'Корт POUND4PADEL'},
  {src:'assets/club-interior/584A3298.webp',caption:'Раздевалка'},
  {src:'assets/club-interior/584A3300.webp',caption:'Шкафчики в раздевалке'},
-
  {src:'assets/club-community.jpg',caption:'Наши люди'},
  {src:'assets/club-awards.jpg',caption:'Турнир POUND4PADEL'},
  {src:'assets/club-opening.jpg',caption:'Открытие клуба'},
@@ -43,7 +42,7 @@ function showGallery(index){
 }
 galleryItems.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.dataset.galleryIndex=index;button.setAttribute('aria-label',item.caption);button.setAttribute('aria-pressed','false');const img=document.createElement('img');img.src=item.src;img.alt='';img.loading='lazy';button.append(img);button.addEventListener('click',()=>showGallery(index));viewer.querySelector('.gallery-thumbs').append(button);});
 document.querySelectorAll('.zoom-image').forEach(button=>button.addEventListener('click',()=>{
- viewerTrigger=button;const isGallery=button.classList.contains('club-story');galleryControls.hidden=!isGallery;viewer.classList.toggle('is-gallery',isGallery);
+ viewerTrigger=button;const isGallery=(button.classList.contains('club-story')||button.hasAttribute('data-gallery'));galleryControls.hidden=!isGallery;viewer.classList.toggle('is-gallery',isGallery);
  if(isGallery){showGallery(galleryItems.findIndex(item=>item.src===button.dataset.image));}else{const img=viewer.querySelector('img');img.src=button.dataset.image;img.alt=button.dataset.caption;viewer.querySelector('p').textContent=button.dataset.caption;}
  viewer.showModal();document.body.style.overflow='hidden';
 }));
