@@ -1,0 +1,7 @@
+/* First-visit brand introduction. The page remains usable if scripts fail. */
+html.p4p-loading::before{content:"";position:fixed;inset:0;z-index:10000;background:#0c1922;opacity:1;transition:opacity 240ms var(--ease-out,cubic-bezier(.23,1,.32,1));animation:p4p-loader-safety 1ms 3500ms forwards}
+html.p4p-loading::after{content:"";position:fixed;left:50%;top:50%;z-index:10001;width:clamp(220px,30vw,420px);aspect-ratio:1180/410;background:url('assets/logo.svg') center/contain no-repeat;pointer-events:none;transform:translate(-50%,-50%);animation:p4p-logo-enter 500ms var(--ease-out,cubic-bezier(.23,1,.32,1)) both;transition:opacity 240ms var(--ease-out,cubic-bezier(.23,1,.32,1))}
+html.p4p-loading.p4p-loader-leaving::before,html.p4p-loading.p4p-loader-leaving::after{opacity:0;pointer-events:none}
+@keyframes p4p-logo-enter{from{opacity:0;transform:translate(-50%,-50%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes p4p-loader-safety{to{visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){html.p4p-loading::after{animation:none}html.p4p-loading::before,html.p4p-loading::after{transition:none}}
