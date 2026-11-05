@@ -1,0 +1,8 @@
+/* Keep the complete architectural renders in their native 3:2 frame. */
+body .investor-panel>figure:not(.investor-plan)>img,
+body .home-investors .investor-teaser-image img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;object-position:center;background:#e5e5e5}
+/* Stable readable controls over both pale products and dark photography. */
+body.site-experience .media-action{background:linear-gradient(125deg,#16354de8,#173b51d9);color:#fff;border-color:#ffffff80}
+body.investors-page .investor-document .ui-button{background:#f1f5f8;color:#183269;border:1px solid #fff;box-shadow:inset 0 1px 1px white,0 3px 12px #081e3326}
+body .equipment-grid figure{min-width:0}body .equipment-grid figcaption{gap:18px}body .equipment-grid figcaption>div{min-width:0}
+@media(max-width:650px){body .equipment-grid figcaption{flex-wrap:wrap;align-items:start;row-gap:16px}body .equipment-grid .product-options{margin-top:0}}
