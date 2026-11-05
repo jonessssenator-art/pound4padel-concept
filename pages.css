@@ -103,3 +103,7 @@
 @media(max-width:650px){.table-scroll-hint{display:block;font-size:12px;margin-bottom:16px}}
 
 #interior .club-stories{grid-template-columns:repeat(2,minmax(0,1fr))}#interior .club-story{aspect-ratio:1.5}@media(max-width:650px){#interior .club-stories{grid-template-columns:1fr}}
+
+/* One reading axis for descriptions, questions and concluding actions. */
+@media(min-width:651px){.detail-page :is(.reading-section,.first,.page-note,.closing){grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:64px;align-items:start}}
+@media(min-width:651px) and (max-width:1050px){.detail-page :is(.reading-section,.first,.page-note,.closing){column-gap:32px}}

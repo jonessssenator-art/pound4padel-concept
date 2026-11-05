@@ -20,7 +20,3 @@
 @media(hover:hover) and (pointer:fine){#main .faq-item:not([open]):hover{background:#1b3242}#main .area-details.faq-item:not([open]):hover{background:#fff}}
 @media(max-width:650px){#main .questions{gap:10px}#main .faq-item>summary{padding:20px;gap:16px;min-height:76px;font-size:16px}#main .faq-item .faq-answer{padding:0 20px 20px}#main .faq-answer>p{font-size:14px;line-height:1.75}#main .faq-item>summary .faq-action{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#main .faq-item{transition:none}}
-
-/* Align question panels with the reading column above them. */
-@media(min-width:651px){.detail-page .first{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:64px}}
-@media(min-width:651px) and (max-width:1050px){.detail-page .first{column-gap:32px}}
