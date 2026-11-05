@@ -1,0 +1,22 @@
+/* A quiet disclosure surface, shared by the visitor guide and investor notes. */
+#main .questions{display:grid;gap:12px;align-content:start}
+#main details.faq-item{margin:0;border:1px solid #f3f0e726;border-radius:12px;background:#142631;color:#f3f0e7;overflow:hidden;interpolate-size:numeric-only;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease}
+#main details.faq-item+details.faq-item{border-top:1px solid #f3f0e726}
+#main .faq-item>summary{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:80px;padding:24px;text-decoration:none;list-style:none;cursor:pointer;font:500 17px/1.5 Manrope,sans-serif;color:inherit}
+#main .faq-item>summary::-webkit-details-marker{display:none}
+#main .faq-item>summary::after{display:none}
+#main .faq-item>summary .faq-action{display:block;flex:none;width:auto;height:auto;border:0;border-radius:0;color:inherit;font:500 12px/1.5 Manrope,sans-serif;transform:none;opacity:.8}
+#main .faq-action::after{content:'Читать'}
+#main .faq-item[open] .faq-action::after{content:'Скрыть'}
+#main .faq-item[open]{background:#f3f0e7;border-color:#f3f0e7;color:#183269}
+#main .faq-item[open]>summary{color:#183269}
+#main .faq-item .faq-answer{padding:0 24px 24px}
+#main .faq-answer>p{font-size:15px;line-height:1.75;color:inherit;max-width:64ch;margin:0;padding:0}
+#main .faq-item::details-content{height:auto;opacity:1;overflow:visible;transition:none}
+#main .faq-item>summary:focus-visible{outline:2px solid #e0ec87;outline-offset:-5px;border-radius:10px}
+#main .faq-item[open]>summary:focus-visible{outline-color:#183269}
+#main .area-details.faq-item{margin-top:24px;max-width:80ch;background:#f3f0e7;color:#183269;border-color:#18326933}
+#main .area-details.faq-item[open]{background:#fff;border-color:#18326966}
+@media(hover:hover) and (pointer:fine){#main .faq-item:not([open]):hover{background:#1b3242;border-color:#f3f0e755}#main .area-details.faq-item:not([open]):hover{background:#fff;border-color:#18326966}}
+@media(max-width:650px){#main .questions{gap:10px}#main .faq-item>summary{padding:20px;gap:16px;min-height:76px;font-size:16px}#main .faq-item .faq-answer{padding:0 20px 20px}#main .faq-answer>p{font-size:14px;line-height:1.75}#main .faq-item>summary .faq-action{font-size:11px}}
+@media(prefers-reduced-motion:reduce){#main .faq-item{transition:none}}
