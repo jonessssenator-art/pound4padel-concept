@@ -29,10 +29,43 @@
    if(next!==undefined){e.preventDefault();select(next);tabs[next].focus();}
   });
  });
- const steps=[...document.querySelectorAll('.route-step')];
- const observer=new IntersectionObserver(entries=>{
-  const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
-  if(visible.length){const active=visible[0].target;steps.forEach(s=>s.classList.toggle('is-active',s===active));const track=document.querySelector('.route-steps');track.style.setProperty('--route-progress',String(Math.max(0,Math.min(1,(active.offsetTop+12)/(track.clientHeight-55)))));}
- },{rootMargin:'-20% 0px -35% 0px',threshold:[0,.25,.5,.75]});
- steps.forEach(step=>observer.observe(step));
+ const route=document.querySelector('.project-route');
+ const steps=[...route.querySelectorAll('.route-step')];
+ steps.forEach(step=>step.classList.remove('is-active'));
+ const ns='http://www.w3.org/2000/svg';
+ const svg=document.createElementNS(ns,'svg');
+ svg.classList.add('route-arrows');svg.setAttribute('aria-hidden','true');
+ const lines=steps.map((step,i)=>{
+  const group=document.createElementNS(ns,'g');
+  group.style.setProperty('--arrow-delay',i*600+'ms');
+  const line=document.createElementNS(ns,'path');
+  line.classList.add('route-arrow-line');line.setAttribute('pathLength','1');
+  const tip=document.createElementNS(ns,'path');tip.classList.add('route-arrow-tip');
+  group.append(line,tip);svg.append(group);return {line,tip};
+ });
+ route.prepend(svg);
+ function layout(){
+  const box=route.getBoundingClientRect();
+  const title=route.querySelector('.route-title').getBoundingClientRect();
+  const heading=route.querySelector('.route-title h2').getBoundingClientRect();
+  const mobile=matchMedia('(max-width:800px)').matches;
+  svg.setAttribute('viewBox','0 0 '+box.width+' '+box.height);
+  const x=mobile?title.left-box.left+5:heading.right-box.left+18;
+  const y=mobile?title.bottom-box.top+18:heading.top-box.top+heading.height/2;
+  lines.forEach(({line,tip},i)=>{
+   const target=steps[i].querySelector('h3').getBoundingClientRect();
+   const tx=target.left-box.left-18,ty=target.top-box.top+target.height/2;
+   const d=mobile
+    ? 'M '+x+' '+y+' V '+(ty-12)+' Q '+x+' '+ty+' '+(x+12)+' '+ty+' H '+tx
+    : 'M '+x+' '+y+' C '+(x+(tx-x)*.5)+' '+y+' '+(x+(tx-x)*.5)+' '+ty+' '+tx+' '+ty;
+   line.setAttribute('d',d);
+   tip.setAttribute('d','M '+(tx-7)+' '+(ty-5)+' L '+tx+' '+ty+' L '+(tx-7)+' '+(ty+5));
+  });
+ }
+ const resize=new ResizeObserver(layout);resize.observe(route);resize.observe(route.querySelector('.route-title'));
+ document.fonts.ready.then(layout);layout();
+ const reveal=new IntersectionObserver(entries=>{
+  if(entries.some(e=>e.isIntersecting)){route.classList.add('arrows-visible');reveal.disconnect();}
+ },{threshold:.15});
+ reveal.observe(route);
 })();
