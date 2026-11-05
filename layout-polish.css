@@ -41,3 +41,4 @@ body .page-note>div>.ui-button,body .closing>div>.ui-button{margin:0}
  body .play-content{padding-top:24px}
  body .equipment figcaption{padding-top:20px}
 }
+@media(min-width:651px){body .closing h2{max-width:none}}
