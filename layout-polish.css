@@ -6,3 +6,38 @@ body.site-experience .media-action{background:linear-gradient(125deg,#16354de8,#
 body.investors-page .investor-document .ui-button{background:#f1f5f8;color:#183269;border:1px solid #fff;box-shadow:inset 0 1px 1px white,0 3px 12px #081e3326}
 body .equipment-grid figure{min-width:0}body .equipment-grid figcaption{gap:18px}body .equipment-grid figcaption>div{min-width:0}
 @media(max-width:650px){body .equipment-grid figcaption{flex-wrap:wrap;align-items:start;row-gap:16px}body .equipment-grid .product-options{margin-top:0}}
+
+/* Shared reading grid and consistent vertical rhythm. */
+:root{--reading-gap:64px;--copy-gap:24px}
+
+body .section-heading>p,body .teaser-copy p{margin:0}
+body .teaser-copy{gap:var(--copy-gap)}
+body .packing dl{margin-top:32px}
+body .page-note>div>p{margin:0}
+body .page-note>div,body .closing>div{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+body .page-note>div>.ui-button,body .closing>div>.ui-button{margin:0}
+@media(min-width:651px){
+ body .home-equipment .section-heading{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;align-items:start}
+ body.detail-page :is(.reading-section,.first,.page-note,.closing){column-gap:var(--reading-gap)}
+ body.detail-page :is(.page-note,.closing){align-items:stretch}
+ body .page-note>div,body .closing>div{justify-content:space-between;padding-block:8px}
+ body .page-note h2,body .closing h2{font-size:clamp(48px,5.3vw,80px);line-height:1.12;max-width:11ch}
+ body .home-women,body .home-investors{align-items:stretch;gap:var(--reading-gap)}
+ body .home-women .section-heading,body .home-investors .section-heading{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:32px;padding-block:8px}
+ body .home-women .teaser-copy,body .home-investors .teaser-copy{margin-top:0}
+ body .home-women .teaser-photo,body .home-investors .investor-teaser-image{align-self:start}
+ body .home-club{padding-top:var(--section-space)}
+}
+@media(min-width:651px) and (max-width:1050px){:root{--reading-gap:32px}}
+@media(max-width:650px){
+ body .section-heading{margin-bottom:24px}
+ body .section-heading>p{margin-top:24px}
+ body .home-women .teaser-copy,body .home-investors .teaser-copy{margin-top:24px}
+ body .home-women .section-heading,body .home-investors .section-heading{margin-bottom:0}
+ body.detail-page :is(.page-note,.closing){display:flex;flex-direction:column;align-items:stretch;gap:28px}
+ body .page-note>div,body .closing>div{margin-top:0;gap:24px;padding:0}
+ body .page-note h2,body .closing h2{font-size:44px;line-height:1.12;max-width:14ch}
+ body .play .panel{min-height:0}
+ body .play-content{padding-top:24px}
+ body .equipment figcaption{padding-top:20px}
+}
