@@ -1,0 +1,67 @@
+body #infrastructure.complex-overview{display:block}
+.complex-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:40px}
+.complex-heading h2{font-size:clamp(44px,5.3vw,80px);line-height:1.12;max-width:14ch}
+.complex-heading>p{max-width:26ch;margin:0 0 8px}
+.complex-scene{position:relative;overflow:hidden;border-radius:24px;background:#d9d8d5;isolation:isolate}
+.complex-map>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+.complex-highlight{position:absolute;left:46%;top:47%;width:28%;height:28%;border:2px solid #c72043;border-radius:12px;background:#c7204315;box-shadow:0 0 0 5px #ffffff45;transition:transform 250ms var(--ease-out),opacity 200ms ease}
+.complex-scene[data-zone="1"] .complex-highlight{transform:translateY(-8%)}
+.complex-scene[data-zone="2"] .complex-highlight{transform:translateY(-20%) scaleY(.7)}
+.complex-scene[data-zone="3"] .complex-highlight{opacity:0}
+.complex-scene-label{position:absolute;left:48%;top:77%;padding:10px 18px;background:#183269;color:#fff;border-radius:99px;font-size:14px}
+.complex-plan{position:absolute;bottom:24px;right:24px;padding:12px 20px;border-radius:99px;background:#f3f0e7;color:#183269;font-size:14px;text-decoration:none;box-shadow:0 2px 12px #0002}
+.complex-caption{font-size:12px;line-height:1.5;margin:12px 0 32px;opacity:.75}
+.complex-tabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #18326933;margin-bottom:32px}
+.complex-tabs button{font:500 clamp(20px,2.1vw,30px)/1.2 Oswald,sans-serif;text-align:left;padding:18px 12px 22px;background:none;border:0;border-bottom:3px solid transparent;color:#183269;cursor:pointer;transition:color 180ms ease,border-color 180ms ease}
+.complex-tabs button[aria-selected="true"]{color:#be2340;border-bottom-color:#be2340}
+.complex-panel{display:grid;grid-template-columns:1.5fr 1fr;gap:64px;min-height:235px}
+.complex-panel[hidden]{display:none}
+body #infrastructure .complex-panel h3{display:block;font-size:clamp(30px,3.2vw,46px);line-height:1.15;margin:0 0 20px}
+.complex-panel p{max-width:58ch;margin:0}
+.complex-metric{border-left:1px solid #18326933;padding-left:40px;align-self:start;display:flex;flex-direction:column;gap:12px}
+.complex-metric strong{font:500 clamp(40px,5vw,68px)/1.1 Oswald,sans-serif}
+.complex-metric span{max-width:30ch;font-size:14px}
+.complex-panel details,.route-step details{margin-top:20px;font-size:14px}
+.complex-panel summary,.route-step summary{cursor:pointer;text-decoration:underline;text-underline-offset:5px;padding:8px 0;width:fit-content}
+.complex-panel details p,.route-step details p{margin:16px 0 0;line-height:1.7}
+body #next-step.project-route{display:grid;grid-template-columns:1fr 1.3fr;gap:64px}
+.route-title{align-self:center}
+.route-title h2{font-size:clamp(44px,5.3vw,80px);line-height:1.12}
+.route-title>p{margin:24px 0 0;max-width:26ch}
+.route-steps{position:relative;padding-left:36px}
+.route-steps::before{content:"";position:absolute;left:7px;top:15px;bottom:40px;width:2px;background:#18326925}
+.route-step{position:relative;padding:0 0 36px 24px}
+.route-step:last-child{padding-bottom:0}
+.route-node{position:absolute;left:-36px;top:12px;width:16px;height:16px;border:2px solid #183269;background:#ece7dc;border-radius:50%;transition:background 200ms ease,border-color 200ms ease}
+.route-step h3{font-size:clamp(30px,3vw,44px);line-height:1.2;margin:0 0 16px;transition:color 200ms ease}
+.route-step>p{margin:0;max-width:48ch}
+.route-step.is-active h3{color:#be2340}.route-step.is-active .route-node{background:#be2340;border-color:#be2340;box-shadow:0 0 0 6px #be234015}
+.complex-tabs button:focus-visible,.complex-plan:focus-visible{outline:2px solid #be2340;outline-offset:4px}
+@media(max-width:800px){
+.complex-heading{display:block;margin-bottom:24px}.complex-heading>p{margin:20px 0 0}
+.complex-scene{border-radius:14px}.complex-scene-label{font-size:11px;padding:6px 10px;top:74%;left:40%}
+.complex-plan{position:static;display:block;text-align:center;border-radius:0;box-shadow:none;font-size:13px}
+.complex-tabs{grid-template-columns:repeat(2,1fr);gap:4px 16px;margin-bottom:24px}.complex-tabs button{font-size:22px;padding:14px 0}
+.complex-panel{grid-template-columns:1fr;gap:24px;min-height:0}.complex-metric{padding:20px 0 0;border-left:0;border-top:1px solid #18326933}
+body #next-step.project-route{grid-template-columns:1fr;gap:40px}.route-title>p{max-width:none}
+.route-step{padding-left:12px}.route-steps{padding-left:28px}.route-node{left:-28px}.route-steps::before{left:7px}
+.complex-caption{margin-bottom:20px}
+}
+@media(prefers-reduced-motion:reduce){.complex-highlight,.route-node,.route-step h3,.complex-tabs button{transition:none}}
+/* Keep the controls, illustration and explanation in one view. */
+.complex-heading{display:block}.complex-heading h2{max-width:none}.complex-heading>p{max-width:none;margin:20px 0 0}
+.complex-body{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:40px;align-items:start}
+.complex-panel{display:flex;flex-direction:column;gap:32px;min-height:0}
+.complex-panel[hidden]{display:none}
+.complex-metric{padding:24px 0 0;border-left:0;border-top:1px solid #18326933;width:100%}
+.complex-tabs{margin-bottom:28px}.complex-caption{margin-bottom:0}
+.complex-plan{font-size:12px;padding:10px 16px;bottom:16px;right:16px}
+.complex-scene-label{font-size:12px;padding:8px 12px}
+.complex-scene[data-zone="3"] .complex-scene-label{display:none}
+.route-steps::after{content:"";position:absolute;left:7px;top:15px;height:calc(100% - 55px);width:2px;background:#be2340;transform:scaleY(var(--route-progress,0));transform-origin:top;transition:transform 250ms var(--ease-out)}
+.route-node{z-index:1}
+@media(max-width:1000px){.complex-body{grid-template-columns:1fr;gap:24px}.complex-panel{display:grid;grid-template-columns:1.5fr 1fr;gap:32px}.complex-metric{border:0;padding:0}}
+@media(max-width:650px){.complex-panel{display:flex;gap:24px}.complex-metric{border-top:1px solid #18326933;padding-top:20px}.complex-scene-label{font-size:11px;padding:6px 10px}}
+@media(prefers-reduced-motion:reduce){.route-steps::after{transition:none}}
+
+.complex-map{position:relative}
