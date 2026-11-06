@@ -17,4 +17,4 @@
 @media(max-width:650px){.logo{top:5%;width:180px}.copy{top:26%;width:94%}.copy h1{font-size:clamp(46px,12.3vw,68px);line-height:1.02}.copy p{font-size:12px;margin:24px 0 18px}.enter{font-size:16px;min-width:150px}.scene{bottom:8%}.bounce{translate:310px -90px}.controls{left:50%;right:auto;transform:translateX(-50%);bottom:12px}.plate{filter:brightness(.8)}}
 @media(max-height:700px) and (min-width:651px){.copy{top:24%}.copy h1{font-size:10.8vh}.copy p{margin:18px 0 8px;font-size:13px}.enter{padding:8px 0;font-size:16px}.logo{width:150px;top:4%}}
 @media(min-width:651px){.right{translate:110px 0}}
-@media(max-width:650px){.bounce{translate:330px -610px}}
+@media(max-width:650px){.bounce{translate:330px -660px}}
