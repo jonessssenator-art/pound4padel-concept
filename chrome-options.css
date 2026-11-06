@@ -9,12 +9,15 @@ html[data-chrome=compact] body .header .menu{position:absolute;left:20px;top:50%
 html[data-chrome=compact] body .header .header-cta{top:16px;transform:none!important}@media(max-width:650px){html[data-chrome=compact] body .header .header-cta{top:14px}}
 @media(max-width:360px){html[data-chrome=compact] body .header .brand,html[data-chrome=compact] body .header .brand img{width:94px}html[data-chrome=compact] body .header .header-cta{width:72px;max-width:72px;white-space:normal;justify-content:center;padding:7px 5px;font-size:10px}}
 /* Compact invitation and footer rhythm across all pages. */
-html[data-chrome=compact] body .site-footer{padding:40px 30px 24px;gap:18px}
-html[data-chrome=compact] body .footer-invite{padding:26px 36px;gap:28px;margin-bottom:10px}
+html[data-chrome=compact] body .site-footer{padding:26px 30px 18px;gap:10px}
+html[data-chrome=compact] body .footer-invite{padding:18px 30px;gap:28px;margin-bottom:4px}
 html[data-chrome=compact] body .footer-invite h2{font-size:clamp(36px,4vw,56px);line-height:1.15;white-space:nowrap;margin:0}
 @media(max-width:650px){
- html[data-chrome=compact] body .site-footer{padding:28px 20px 24px;gap:18px}
- html[data-chrome=compact] body .footer-invite{padding:22px 18px;margin-bottom:4px;text-align:center}
+ html[data-chrome=compact] body .site-footer{padding:22px 20px 16px;gap:10px}
+ html[data-chrome=compact] body .footer-invite{padding:18px;margin-bottom:2px;text-align:center}
  html[data-chrome=compact] body .footer-invite h2{font-size:clamp(24px,6vw,36px);margin:0 0 18px}
  html[data-chrome=compact] body .footer-invite .ui-button{margin-inline:auto}
 }
+
+html[data-chrome=compact] body .site-footer>a:first-of-type,html[data-chrome=compact] body .site-footer>a:first-of-type img{width:150px}
+html[data-chrome=compact] body .site-footer nav{gap:8px 24px}
