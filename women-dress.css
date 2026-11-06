@@ -1,0 +1,13 @@
+.dress-code{background:#111f29}
+.dress-code h2{font-size:clamp(40px,4.5vw,64px);line-height:1.15;margin:0 0 16px}
+.dress-intro{max-width:60ch;color:#c8d0d4;line-height:1.7;margin-bottom:40px}
+.dress-columns{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.dress-columns h3{font-size:28px;line-height:1.3;margin-bottom:24px}
+.dress-columns .dress-yes h3{color:#e0ec87}
+.dress-columns ul{padding-left:20px;margin:0;display:grid;gap:16px;max-width:55ch}
+.dress-columns li{padding-left:6px;font-size:16px;line-height:1.7;color:#c8d0d4}
+.dress-cafe{margin-top:40px;padding:28px 32px;background:#172a36;border-radius:12px;display:grid;grid-template-columns:1fr 2fr;gap:32px}
+.dress-cafe h3{font-size:28px;line-height:1.3;margin:0}
+.dress-cafe p{line-height:1.75;max-width:65ch;margin:0;color:#c8d0d4}
+.dress-cafe p+p{margin-top:12px}
+@media(max-width:650px){.dress-columns{grid-template-columns:1fr;gap:32px}.dress-columns h3{font-size:25px;margin-bottom:16px}.dress-columns li{font-size:15px}.dress-intro{margin-bottom:28px}.dress-cafe{grid-template-columns:1fr;padding:24px;gap:16px;margin-top:32px}}
