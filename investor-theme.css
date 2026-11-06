@@ -1,0 +1,28 @@
+/* Investor content shares the club's navy surfaces and cream typography. */
+body .home-investors{background:#111f29;color:#f3f0e7}
+body.investors-page,body.investors-page .investors{background:#0c1922;color:#f3f0e7}
+body.investors-page :is(.comparison,.reading-section,.complex-overview,.project-route){background:#111f29;color:#f3f0e7}
+body.investors-page :is(.page-intro>p,.breadcrumbs,.reading-rows p,.investor-description p,.investor-description ul,.investor-panel figcaption,.table-note,.investor-scope,.complex-caption,.complex-heading>p,.complex-panel p,.route-step>p,.route-title>p){color:#c8d0d4}
+body.investors-page .comparison-scroll{background:#172a36;color:#f3f0e7;scrollbar-color:#7c949f #172a36}
+body.investors-page .comparison thead th{background:#203b4e;color:#f3f0e7}
+body.investors-page :is(.comparison th,.comparison td){border-color:#ffffff20}
+body.investors-page .comparison tbody tr:hover{background:#213b4a}
+body.investors-page .investor-document{background:#172a36;color:#f3f0e7}
+body.investors-page .investor-options.ui-segmented{background:#14232d;border-color:#f3f0e738;--segment-fill:#f3f0e7}
+body.investors-page .investor-options.ui-segmented>button{color:#c8d0d4}
+body.investors-page .investor-options.ui-segmented>button[aria-selected=true]{color:#183269}
+body.investors-page :is(.page-jumps a,main .ui-button){background:var(--glass-fill);color:#f7fafc;border:var(--glass-edge);box-shadow:var(--glass-shadow)}
+body.investors-page .investor-document .ui-button-primary{background:#f3f0e7;color:#183269;border-color:#f3f0e7}
+body.investors-page .investor-plan>button{color:#183269}
+body.investors-page .document-contents{border-color:#ffffff25}
+body.investors-page .complex-tabs{border-color:#ffffff25}
+body.investors-page .complex-tabs button{color:#c8d0d4}
+body.investors-page .complex-tabs button[aria-selected=true]{color:#e0ec87;border-bottom-color:#e0ec87}
+body.investors-page .complex-metric{border-color:#ffffff25}
+body.investors-page .route-step.is-active h3{color:#e0ec87}
+body.investors-page .route-arrows{stroke:#e0ec87}
+body.investors-page :focus-visible{outline-color:#e0ec87}
+@media(hover:hover){
+ body.investors-page :is(.page-jumps a,main .ui-button):hover{background:#f3f0e7;color:#183269;border-color:#f3f0e7}
+ body.investors-page :is(.breadcrumbs a,.document-contents a):hover{color:#e0ec87}
+}
