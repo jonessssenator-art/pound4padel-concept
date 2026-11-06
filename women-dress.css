@@ -25,3 +25,11 @@
 @media(max-width:650px){.dress-looks{grid-template-columns:1fr;gap:36px;margin-top:28px}.dress-labels{font-size:11px;gap:4px}.dress-look h3{font-size:27px;margin-bottom:16px}.dress-look>p{margin-top:16px}.dress-cafe-short{padding:20px;font-size:14px}}
 
 .dress-rules summary{list-style:none}.dress-rules summary::-webkit-details-marker{display:none}
+
+/* Each outfit has its own viewport; mobile shows two larger examples per row. */
+.dress-examples{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.dress-example{margin:0;min-width:0}
+.dress-person{position:relative;overflow:hidden;aspect-ratio:352/512;border-radius:8px;background:#0d1b25}
+.dress-person img{position:absolute;max-width:none;width:436.364%;height:200%;left:calc(-22.727% - var(--column)*100%);top:calc(var(--row)*-100%)}
+.dress-example figcaption{font-size:13px;line-height:1.5;text-align:center;margin-top:14px;padding-inline:4px;color:#f3f0e7}
+@media(max-width:650px){.dress-examples{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.dress-example figcaption{font-size:13px;margin-top:10px}}
