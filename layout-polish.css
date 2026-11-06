@@ -42,3 +42,26 @@ body .page-note>div>.ui-button,body .closing>div>.ui-button{margin:0}
  body .equipment figcaption{padding-top:20px}
 }
 @media(min-width:651px){body .closing h2{max-width:none}}
+
+/* Home previews share the same column edge across adjacent sections. */
+@media(min-width:651px){
+ body.home-page :is(.home-club>.section-heading,.home-equipment>.section-heading,.home-women,.home-investors,.home-products){grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--reading-gap)}
+ body.home-page .section-heading>.teaser-copy{min-width:0}
+ body.home-page .home-club>.section-heading{align-items:start}
+}
+
+/* Information sections: heading above compact topic-and-copy rows. */
+body.detail-page .reading-section{display:block}
+body.detail-page .reading-section>h2{font-size:clamp(36px,3.4vw,52px);line-height:1.15;margin:0 0 40px;max-width:none}
+body.detail-page .reading-section>h2 br{display:none}
+body.detail-page .reading-rows{display:grid;gap:32px}
+body.detail-page .reading-rows article{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.8fr);column-gap:48px;align-items:start;margin:0;padding:0;border:0}
+body.detail-page .reading-rows h3{font-size:26px;line-height:1.3;margin:0;max-width:22ch}
+body.detail-page .reading-rows p{max-width:68ch;margin:0}
+body .equipment-purchase-note{font-size:15px;line-height:1.7;color:#c8d0d4;max-width:65ch;margin:24px 0 32px}
+@media(max-width:650px){
+ body.detail-page .reading-section>h2{margin-bottom:28px}
+ body.detail-page .reading-rows{gap:28px}
+ body.detail-page .reading-rows article{grid-template-columns:1fr;gap:10px}
+ body.detail-page .reading-rows h3{font-size:24px;max-width:none}
+}

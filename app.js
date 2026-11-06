@@ -32,8 +32,23 @@ const peopleItems=[
  {src:'assets/club-people/HAN08291.jpg',caption:'Гости клуба'},
  {src:'assets/club-people/HAN08735.jpg',caption:'Гости POUND4PADEL'},
  {src:'assets/club-people/HAN08757.jpg',caption:'Встречи в клубе'},
- {src:'assets/club-awards.jpg',caption:'Турнир POUND4PADEL'},
- {src:'assets/club-opening.jpg',caption:'Открытие клуба'}
+ {src:'assets/club-opening.jpg',caption:'Открытие клуба'},
+ {src:'assets/club-people/HAN08300.jpg',caption:'Гости клуба'},
+ {src:'assets/club-people/HAN08342.jpg',caption:'Встречи в клубе'},
+ {src:'assets/club-people/HAN08372.jpg',caption:'Открытие клуба'},
+ {src:'assets/club-people/HAN08610.jpg',caption:'Гости на галерее'},
+ {src:'assets/club-people/HAN08764.jpg',caption:'Встреча на открытии'}
+];
+const tournamentItems=[
+ {src:'assets/club-awards.jpg',caption:'Награждение участников'},
+ {src:'assets/club-tournament/HAN05462.jpg',caption:'Парная игра'},
+ {src:'assets/club-tournament/HAN05530.jpg',caption:'Розыгрыш на корте'},
+ {src:'assets/club-tournament/HAN05557.jpg',caption:'Участник турнира'},
+ {src:'assets/club-tournament/HAN05583.jpg',caption:'Зрители турнира'},
+ {src:'assets/club-tournament/HAN05637.jpg',caption:'Игра у сетки'},
+ {src:'assets/club-tournament/HAN05743.jpg',caption:'Приём мяча'},
+ {src:'assets/club-tournament/HAN05763.jpg',caption:'Матч турнира'},
+ {src:'assets/club-tournament/HAN05892.jpg',caption:'Между матчами'}
 ];
 const galleryControls=viewer.querySelector('.gallery-controls');
 let galleryIndex=0;
@@ -47,13 +62,13 @@ function showGallery(index){
 function selectGallery(items){
  galleryItems=items;
  const thumbs=viewer.querySelector('.gallery-thumbs');thumbs.replaceChildren();
- const title=items===interiorItems?'Интерьер клуба':'Наши люди';
+ const title=items===interiorItems?'Интерьер клуба':items===tournamentItems?'Турниры клуба':'Наши люди';
  viewer.setAttribute('aria-label',title);thumbs.setAttribute('aria-label','Фотографии: '+title);
  galleryItems.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.dataset.galleryIndex=index;button.setAttribute('aria-label',item.caption);button.setAttribute('aria-pressed','false');const img=document.createElement('img');img.src=item.src;img.alt='';img.loading='lazy';button.append(img);button.addEventListener('click',()=>showGallery(index));thumbs.append(button);});
 }
 document.querySelectorAll('.zoom-image').forEach(button=>button.addEventListener('click',()=>{
  viewerTrigger=button;const isGallery=(button.classList.contains('club-story')||button.hasAttribute('data-gallery'));galleryControls.hidden=!isGallery;viewer.classList.toggle('is-gallery',isGallery);
- if(isGallery){selectGallery(peopleItems.some(item=>item.src===button.dataset.image)?peopleItems:interiorItems);showGallery(Math.max(0,galleryItems.findIndex(item=>item.src===button.dataset.image)));}else{viewer.setAttribute('aria-label','Просмотр изображения');const img=viewer.querySelector('img');img.src=button.dataset.image;img.alt=button.dataset.caption;viewer.querySelector('p').textContent=button.dataset.caption;}
+ if(isGallery){selectGallery(tournamentItems.some(item=>item.src===button.dataset.image)?tournamentItems:peopleItems.some(item=>item.src===button.dataset.image)?peopleItems:interiorItems);showGallery(Math.max(0,galleryItems.findIndex(item=>item.src===button.dataset.image)));}else{viewer.setAttribute('aria-label','Просмотр изображения');const img=viewer.querySelector('img');img.src=button.dataset.image;img.alt=button.dataset.caption;viewer.querySelector('p').textContent=button.dataset.caption;}
  viewer.showModal();document.body.style.overflow='hidden';
 }));
 viewer.querySelectorAll('[data-gallery-step]').forEach(b=>b.addEventListener('click',()=>showGallery(galleryIndex+Number(b.dataset.galleryStep))));
