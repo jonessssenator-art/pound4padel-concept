@@ -13,7 +13,7 @@
   scene.dataset.zone=index;
   label.textContent=labels[index];
   section.querySelector('.complex-caption').textContent=index===3?'Исходные виды фасада. Размещение вывесок требует согласования.':'Концепция на 7 кортов. Выделение показывает общий блок, а не точные границы помещений.';
-  img.src=index===3?'assets/investor-document/page-1.webp?v=2':'assets/investor-7-straight.webp';
+  img.src=index===3?'assets/investor-document/page-1.webp?v=3':'assets/investor-7-straight.webp';
   img.alt=index===3?'Четыре архитектурных вида фасада POUND4PADEL':'Концепция на 7 кортов: '+labels[index];
   const link=scene.querySelector('a');link.href=index===3?'#document-page-1':'#document-page-5';link.textContent=index===3?'Рассмотреть фасады':'Посмотреть планировку';
   panels.forEach(p=>p.getAnimations().forEach(a=>a.cancel()));
