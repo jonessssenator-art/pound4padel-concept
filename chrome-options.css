@@ -21,3 +21,4 @@ html[data-chrome=compact] body .footer-invite h2{font-size:clamp(36px,4vw,56px);
 
 html[data-chrome=compact] body .site-footer>a:first-of-type,html[data-chrome=compact] body .site-footer>a:first-of-type img{width:150px}
 html[data-chrome=compact] body .site-footer nav{gap:8px 24px}
+@media(max-width:420px){html[data-chrome=compact] body .site-footer nav{display:grid;grid-template-columns:repeat(2,auto);gap:0 24px;text-align:center}}
