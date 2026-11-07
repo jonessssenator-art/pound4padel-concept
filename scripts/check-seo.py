@@ -62,3 +62,43 @@ assert all(org == organizations[0] for org in organizations)
 urls = [n.text for n in ET.parse(ROOT / 'sitemap.xml').findall('.//{*}loc')]
 assert urls == canonicals
 print('Sitemap: all 5 canonical URLs match')
+
+# Auxiliary documents remain crawlable but excluded from search results.
+AUXILIARY = ['privacy.html', 'cookies.html', 'component-lab.html',
+             'tactile-preview.html', 'loader-preview.html', 'ball-intro/index.html']
+import re
+import hashlib
+import base64
+all_files = sorted(ROOT.glob('*.html')) + [ROOT / 'ball-intro/index.html']
+assert {p.relative_to(ROOT).as_posix() for p in all_files} == {
+    *(name + '.html' for name in PAGES), *AUXILIARY
+}, 'New HTML page requires explicit indexation review'
+titles = []
+for path in all_files:
+    source = path.read_text()
+    page = Head(); page.feed(source)
+    title = re.findall(r'<title>(.*?)</title>', source, re.S)
+    assert len(title) == 1 and title[0].strip(), path
+    titles.append(title[0])
+    assert page.h1 == 1, (path, 'H1 count', page.h1)
+    robots = [a['content'] for t,a in page.tags if t == 'meta' and a.get('name') == 'robots']
+    assert len(robots) == 1, (path, 'robots count')
+    relative = path.relative_to(ROOT).as_posix()
+    if relative in AUXILIARY:
+        assert 'noindex' in robots[0], relative
+        assert BASE + relative not in urls, relative
+    if path.stem in ['privacy','cookies']:
+        document = json.loads(''.join(page.json))
+        assert document['@type'] == 'WebPage'
+        assert document['url'] == BASE + relative
+        assert document['description'] == next(a['content'] for t,a in page.tags if t == 'meta' and a.get('name') == 'description')
+        assert next(a['href'] for t,a in page.tags if t == 'link' and a.get('rel') == 'canonical') == document['url']
+    # SEO JSON-LD changes must not leave outdated inline script hashes in CSP.
+    policies = [a['content'] for t,a in page.tags if t == 'meta' and a.get('http-equiv') == 'Content-Security-Policy']
+    assert len(policies) == 1
+    for attributes, body in re.findall(r'<script\b([^>]*)>(.*?)</script>', source, re.S|re.I):
+        if not re.search(r'\bsrc\s*=', attributes) and body.strip():
+            digest = base64.b64encode(hashlib.sha256(body.encode()).digest()).decode()
+            assert "'sha256-" + digest + "'" in policies[0], (path, 'CSP hash is stale')
+assert len(titles) == len(set(titles)), 'Duplicate titles'
+print('All 11 HTML pages: titles, H1, indexation, draft schemas and CSP hashes OK')
