@@ -12,7 +12,7 @@
   }
   // One reveal for each visual destination. Content is visible without JS, outside
   // the viewport, during keyboard navigation and when reduced motion is requested.
-  const revealTargets = document.querySelectorAll('.teaser-photo,.home-products>a,.investor-teaser-image,.club-story,.page-wide-photo,.women-lead,.equipment-scene,.equipment-grid>figure,.packing dl>div,.walk-zoom');
+  const revealTargets = document.querySelectorAll('.teaser-photo:not(.motion-reveal),.home-products>a,.investor-teaser-image,.club-story,.page-wide-photo,.women-lead,.equipment-scene,.equipment-grid>figure,.packing dl>div,.walk-zoom');
   const observer = new IntersectionObserver(entries => {
     const visible = entries.filter(entry => entry.isIntersecting);
     visible.forEach((entry, index) => {

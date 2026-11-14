@@ -8,8 +8,16 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('
 const tabs=[...document.querySelectorAll('.play [role=tab]')];
 function selectTab(tab,animate=true){const format=tab.id.replace("tab-","");document.querySelector(".play-experience").dataset.format=format;document.querySelectorAll('[data-scene]').forEach(img=>{const active=img.dataset.scene===format;img.classList.toggle('is-active',active);img.setAttribute('aria-hidden',String(!active));});tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});const panel=document.getElementById(tab.getAttribute('aria-controls'));panel.getAnimations().forEach(a=>a.cancel());if(animate&&!reduced.matches)panel.animate([{opacity:.25,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});}
 tabs.forEach((tab,i)=>{tab.addEventListener('click',e=>selectTab(tab,e.detail>0));tab.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(i+1)%tabs.length;if(e.key==='ArrowLeft')n=(i+tabs.length-1)%tabs.length;if(e.key==='Home')n=0;if(e.key==='End')n=tabs.length-1;if(n!==undefined){e.preventDefault();selectTab(tabs[n],false);tabs[n].focus();}});});
-function animateIntro(){if(reduced.matches)return;document.querySelectorAll('.hero h1 span').forEach((el,i)=>el.animate([{opacity:0,transform:'translateY(24px)'},{opacity:1,transform:'translateY(0)'}],{duration:800,delay:100+i*80,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));}
+function animateIntro(){
+ if(reduced.matches)return;
+ document.querySelectorAll('.hero h1 span').forEach((el,i)=>el.animate([
+  {opacity:.15,filter:'blur(4px)',transform:'translateY(8px)'},
+  {opacity:1,filter:'blur(0)',transform:'translateY(0)'}
+ ],{duration:600,delay:i*80,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));
+}
 document.fonts.ready.then(animateIntro);
+reduced.addEventListener('change',()=>{if(reduced.matches)document.querySelectorAll('.hero h1 span').forEach(el=>el.getAnimations().forEach(a=>a.cancel()));});
+
 let ticking=false;const energy=document.querySelector('.energy');const balls=document.querySelector('.balls-photo');
 function paintScroll(){ticking=false;if(reduced.matches||!energy||!balls)return;const rect=energy.getBoundingClientRect();if(rect.bottom>0&&rect.top<innerHeight){const progress=Math.max(-1,Math.min(1,(innerHeight/2-(rect.top+rect.height/2))/innerHeight));balls.style.transform=`translateY(${progress*32}px) scale(1.055)`;}}
 window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(paintScroll);}},{passive:true});

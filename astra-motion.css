@@ -1,0 +1,37 @@
+/* Web adaptations of the selected Astra interactions, in POUND4PADEL's tokens. */
+.motion-control{isolation:isolate;overflow:hidden}
+.motion-ripple{position:absolute;border-radius:50%;background:currentColor;opacity:0;pointer-events:none;z-index:-1;animation:padel-ripple 500ms var(--ease-out) forwards}
+@keyframes padel-ripple{from{opacity:.22;transform:scale(.05)}to{opacity:0;transform:scale(1)}}
+html[data-chrome=compact] body .header #navigation.motion-nav{display:flex;position:absolute;inset:90px 0 auto;padding:32px 40px;flex-direction:column;align-items:stretch;gap:0;border:var(--glass-edge);border-radius:26px;background:#102b3eed;backdrop-filter:blur(24px);box-shadow:var(--glass-shadow);pointer-events:none;visibility:hidden;opacity:0;transform:translateY(-12px) scale(.97);transform-origin:32px 0;transition:opacity 220ms var(--ease-out),transform 220ms var(--ease-out),visibility 220ms;max-height:calc(100dvh - 135px);overflow:auto}
+html[data-chrome=compact] body .header #navigation.motion-nav.open{visibility:visible;opacity:1;transform:none;pointer-events:auto}
+html[data-chrome=compact] body .header #navigation.motion-nav :is(.nav-left,.nav-right){display:flex;flex-direction:column;align-items:stretch;gap:0;padding:0}
+html[data-chrome=compact] body .header #navigation.motion-nav a{display:block;pointer-events:inherit;padding:10px 16px;font-family:Oswald,sans-serif;font-size:clamp(24px,3.2vw,42px);font-weight:500;line-height:1.15;border-radius:12px;transition:color 160ms ease,background-color 160ms ease}
+html[data-chrome=compact] body .header #navigation.motion-nav a[aria-current=page]{color:#e0ec87}
+.header .menu span{transition:transform 160ms var(--ease-out)}
+.header .menu[aria-expanded=true] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.header .menu[aria-expanded=true] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.motion-reveal{transform-origin:center center}
+.motion-gallery{display:flex;gap:12px;margin-top:32px;height:clamp(360px,39vw,560px)}
+.motion-frame{position:relative;min-width:0;flex:1;border:0;border-radius:12px;overflow:hidden;background:#102837;padding:0;cursor:pointer;color:#f3f0e7;transition:flex-grow 280ms var(--ease-out)}
+.motion-frame.is-active{flex-grow:3.5}
+.motion-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:filter 220ms ease}
+.motion-frame:not(.is-active) img{filter:brightness(.72)}
+.motion-frame>span{position:absolute;bottom:0;left:0;right:0;padding:48px 20px 20px;background:linear-gradient(transparent,#071827d9);font-size:16px;text-align:left;opacity:0;transform:translateY(6px);transition:opacity 160ms ease,transform 220ms var(--ease-out)}
+.motion-frame.is-active>span{opacity:1;transform:none}
+.motion-frame:focus-visible{outline:3px solid #e0ec87;outline-offset:4px}
+@media(hover:hover) and (pointer:fine){html[data-chrome=compact] body .header #navigation.motion-nav a:hover{color:#e0ec87;background:#ffffff0a}}
+@media(max-width:650px){
+ html[data-chrome=compact] body .header #navigation.motion-nav{top:76px;padding:20px 16px;max-height:calc(100dvh - 110px);border-radius:24px}
+ html[data-chrome=compact] body .header #navigation.motion-nav a{font-size:30px;padding:12px 16px}
+ .motion-gallery{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:4px 4px 14px;margin-top:24px;scrollbar-color:#c5d7df55 transparent}
+ .motion-frame,.motion-frame.is-active{flex:0 0 90%;aspect-ratio:4/5;scroll-snap-align:center}
+ .motion-frame:not(.is-active) img{filter:none}
+ .motion-frame>span{opacity:1;transform:none;font-size:14px}
+}
+html[data-input=keyboard] .motion-frame,html[data-input=keyboard] #navigation.motion-nav{transition:none!important}
+@media(prefers-reduced-motion:reduce){
+ .motion-ripple{display:none}
+ .motion-frame,.motion-frame img,.motion-frame>span,.header .menu span{transition:none!important}
+ .motion-reveal{transform:none!important;clip-path:none!important}
+ html[data-chrome=compact] body .header #navigation.motion-nav{transform:none;transition:none}
+}
