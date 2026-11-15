@@ -1,0 +1,14 @@
+/* Astra reference 687d26cd: inline icons scale with the label's cap height.
+   Our 24-unit SVGs include internal whitespace: 1.4cap keeps the drawn symbol
+   close to the capital height. Standalone/stacked pictograms keep their sizes. */
+body:is(.site-experience,.investors-page) :is(.ui-button,.page-jumps a,.tabs>button,.investor-options>button,.reader-button,.media-action,.document-preview-action) > :is(.site-icon,.investor-icon){
+  font:inherit;
+  width:1em;
+  height:1em;
+  width:1.4cap;
+  height:1.4cap;
+  flex:none;
+}
+body:is(.site-experience,.investors-page) :is(.ui-button,.page-jumps a,.tabs>button,.investor-options>button,.reader-button,.media-action,.document-preview-action){
+  column-gap:.65em;
+}
