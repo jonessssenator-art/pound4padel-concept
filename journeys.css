@@ -1,0 +1,39 @@
+/* Clear next steps, using the existing club typography and colors. */
+.journey-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:24px}
+.journey-phone,.contact-map,.contact-whatsapp{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:5px;font-size:14px}
+.journey-note{font-size:13px!important;line-height:1.6!important;color:#c8d8e2;max-width:46ch;margin-top:16px!important}
+.booking-explanation{max-width:440px}
+.booking-explanation>p:first-child{font-size:15px;line-height:1.7;margin:0 0 22px}
+.booking-explanation .ui-button{white-space:normal}
+html[data-chrome=compact] body .footer-invite{align-items:start;gap:40px;padding:36px}
+html[data-chrome=compact] body .footer-invite h2{font-size:clamp(40px,4.5vw,64px);line-height:1.12;flex:0 1 44%}
+.footer-invite>div{flex:1;min-width:0;max-width:460px}
+.footer-invite>div>p{font-size:15px;line-height:1.7}
+.footer-invite .journey-actions{margin-top:20px}
+.footer-invite .ui-button{font-size:14px!important;white-space:normal!important}
+.contact-map,.contact-whatsapp{margin-top:8px;font-size:13px;color:#dce6ed}
+.club-contacts .contact-phone{display:block}
+.page-intro .journey-actions{margin-top:28px}
+.page-intro>.journey-note{max-width:48ch;font-size:13px!important;margin-top:16px!important}
+.page-note .inline-link{display:inline-block;margin-top:24px}
+.partnership-contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,7vw,110px);align-items:start}
+.partnership-contact h2{font-size:clamp(42px,5vw,72px);margin-bottom:24px}
+.partnership-contact p{font-size:16px;line-height:1.7;max-width:47ch}
+.partnership-message{padding-top:6px}
+.partnership-message .partnership-choice{font-family:Oswald,sans-serif;font-size:30px;margin:24px 0}
+.partnership-message>.journey-phone{margin-top:16px}
+.play .panel .play-action{white-space:normal;text-align:center;line-height:1.45}
+@media(max-width:650px){
+ html[data-chrome=compact] body .footer-invite{padding:24px;gap:24px}
+ html[data-chrome=compact] body .footer-invite h2{font-size:42px;margin-bottom:24px}
+ .journey-actions{align-items:stretch;gap:10px;margin-top:22px}
+ .journey-actions>.ui-button{width:100%;min-height:48px;font-size:14px;white-space:normal;text-align:center;line-height:1.5}
+ .journey-actions>.journey-phone{justify-content:center;min-height:44px;width:100%}
+ .partnership-contact{display:block}
+ .partnership-message{padding-top:28px}
+ .partnership-message>.ui-button{width:100%;font-size:14px;white-space:normal}
+ .partnership-contact p{font-size:15px}
+ .booking-explanation{max-width:none}
+}
+
+.investor-discuss{margin-top:24px}
