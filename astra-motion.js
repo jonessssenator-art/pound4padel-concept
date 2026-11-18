@@ -48,7 +48,12 @@
     menu.addEventListener('click',event=>{if(event.detail===0&&menu.getAttribute('aria-expanded')==='true'){nav.inert=false;nav.querySelector('a')?.focus();}});
     sync();new MutationObserver(sync).observe(menu,{attributes:true,attributeFilter:['aria-expanded']});
     document.addEventListener('pointerdown',event=>{if(menu.getAttribute('aria-expanded')==='true'&&!event.target.closest('.header'))closeMenu();});
-    document.querySelector('.header').addEventListener('focusout',()=>queueMicrotask(()=>{if(!document.activeElement.closest('.header'))closeMenu();}));
+    const header=document.querySelector('.header');
+    // During blur, activeElement can temporarily be body before the link receives
+    // focus. Use the destination so the menu stays open through the native click.
+    header.addEventListener('focusout',event=>{
+      if(event.relatedTarget&&!header.contains(event.relatedTarget))closeMenu();
+    });
   }
   // A single photo opens with scroll. No pinned section or artificial scroll distance.
   const reveal=document.querySelector('.motion-reveal');
