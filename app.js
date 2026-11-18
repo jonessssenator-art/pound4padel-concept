@@ -59,36 +59,65 @@ const tournamentItems=[
  {src:'assets/club-tournament/HAN05892.jpg',caption:'Между матчами'}
 ];
 const galleryControls=viewer.querySelector('.gallery-controls');
-let galleryIndex=0;
-let galleryItems=interiorItems;
+const viewerImage=viewer.querySelector('img');
+const viewerCaption=viewer.querySelector('p');
+const viewerStage=document.createElement('div');
+viewerStage.className='viewer-stage';
+viewerImage.before(viewerStage);viewerStage.append(viewerImage);
+const viewerStatus=document.createElement('div');viewerStatus.className='viewer-status';viewerStatus.setAttribute('role','status');
+const statusText=document.createElement('p');
+const retryImage=document.createElement('button');retryImage.type='button';retryImage.className='ui-button ui-button-small';retryImage.textContent='Повторить';
+const originalImage=document.createElement('a');originalImage.textContent='Открыть оригинал';originalImage.target='_blank';originalImage.rel='noopener';
+viewerStatus.append(statusText,retryImage,originalImage);viewerStage.append(viewerStatus);
+let galleryIndex=0,galleryItems=interiorItems,imageRequest=0,currentItem,bodyOverflow='';
+const galleryAsset=src=>window.P4P_GALLERY_ASSETS?.[src];
+function loadViewerImage(item){
+ currentItem=item;const request=++imageRequest;
+ viewerImage.hidden=true;viewerStatus.hidden=false;retryImage.hidden=true;originalImage.hidden=true;
+ statusText.textContent='Загружаем фотографию';viewerStage.setAttribute('aria-busy','true');
+ viewerCaption.textContent=item.caption;originalImage.href=item.src;
+ const pending=new Image();pending.decoding='async';
+ pending.onload=()=>{if(request!==imageRequest)return;viewerImage.src=pending.src;viewerImage.alt=item.caption;viewerImage.hidden=false;viewerStatus.hidden=true;viewerStage.setAttribute('aria-busy','false');};
+ pending.onerror=()=>{if(request!==imageRequest)return;statusText.textContent='Не удалось загрузить фотографию';retryImage.hidden=false;originalImage.hidden=false;viewerStage.setAttribute('aria-busy','false');};
+ pending.src=galleryAsset(item.src)?.src||item.src;
+}
+retryImage.addEventListener('click',()=>loadViewerImage(currentItem));
+function revealThumbnail(){viewer.querySelector('[data-gallery-index="'+galleryIndex+'"]')?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});}
 function showGallery(index){
- galleryIndex=(index+galleryItems.length)%galleryItems.length;
- const item=galleryItems[galleryIndex];const img=viewer.querySelector('img');
- img.src=item.src;img.alt=item.caption;viewer.querySelector('p').textContent=item.caption;
+ galleryIndex=(index+galleryItems.length)%galleryItems.length;loadViewerImage(galleryItems[galleryIndex]);
  viewer.querySelectorAll('[data-gallery-index]').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===galleryIndex)));
+ if(viewer.open)revealThumbnail();
 }
 function selectGallery(items){
  galleryItems=items;
  const thumbs=viewer.querySelector('.gallery-thumbs');thumbs.replaceChildren();
  const title=items===interiorItems?'Интерьер клуба':items===tournamentItems?'Турниры клуба':'Наши люди';
  viewer.setAttribute('aria-label',title);thumbs.setAttribute('aria-label','Фотографии: '+title);
- galleryItems.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.dataset.galleryIndex=index;button.setAttribute('aria-label',item.caption);button.setAttribute('aria-pressed','false');const img=document.createElement('img');img.src=item.src;img.alt='';img.loading='lazy';button.append(img);button.addEventListener('click',()=>showGallery(index));thumbs.append(button);});
+ galleryItems.forEach((item,index)=>{
+  const button=document.createElement('button');button.type='button';button.dataset.galleryIndex=index;button.setAttribute('aria-label',item.caption);button.setAttribute('aria-pressed','false');
+  const thumbnail=galleryAsset(item.src)?.thumb;
+  if(thumbnail){const img=document.createElement('img');img.src=thumbnail;img.alt='';img.loading='lazy';img.decoding='async';button.append(img);}else{button.textContent=item.caption;}
+  button.addEventListener('click',()=>showGallery(index));thumbs.append(button);
+ });
 }
 document.querySelectorAll('.zoom-image').forEach(button=>button.addEventListener('click',()=>{
- viewerTrigger=button;const isGallery=(button.classList.contains('club-story')||button.hasAttribute('data-gallery'));galleryControls.hidden=!isGallery;viewer.classList.toggle('is-gallery',isGallery);
- if(isGallery){selectGallery(tournamentItems.some(item=>item.src===button.dataset.image)?tournamentItems:peopleItems.some(item=>item.src===button.dataset.image)?peopleItems:interiorItems);showGallery(Math.max(0,galleryItems.findIndex(item=>item.src===button.dataset.image)));}else{viewer.setAttribute('aria-label','Просмотр изображения');const img=viewer.querySelector('img');img.src=button.dataset.image;img.alt=button.dataset.caption;viewer.querySelector('p').textContent=button.dataset.caption;}
- viewer.showModal();document.body.style.overflow='hidden';
+ viewerTrigger=button;const isGallery=button.classList.contains('club-story')||button.hasAttribute('data-gallery');
+ galleryControls.hidden=!isGallery;viewer.classList.toggle('is-gallery',isGallery);
+ if(isGallery){selectGallery(tournamentItems.some(item=>item.src===button.dataset.image)?tournamentItems:peopleItems.some(item=>item.src===button.dataset.image)?peopleItems:interiorItems);showGallery(Math.max(0,galleryItems.findIndex(item=>item.src===button.dataset.image)));}
+ else{viewer.setAttribute('aria-label','Просмотр изображения');loadViewerImage({src:button.dataset.image,caption:button.dataset.caption||button.querySelector('img')?.alt||'Экипировка POUND4PADEL'});}
+ bodyOverflow=document.body.style.overflow;viewer.showModal();document.body.style.overflow='hidden';if(isGallery)revealThumbnail();
 }));
 viewer.querySelectorAll('[data-gallery-step]').forEach(b=>b.addEventListener('click',()=>showGallery(galleryIndex+Number(b.dataset.galleryStep))));
-viewer.addEventListener('keydown',e=>{if(galleryControls.hidden)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();showGallery(galleryIndex+(e.key==='ArrowRight'?1:-1));}});
+viewer.addEventListener('keydown',e=>{if(galleryControls.hidden||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();showGallery(galleryIndex+(e.key==='ArrowRight'?1:-1));}});
 let swipeStart=null;
-viewer.querySelector('img').addEventListener('touchstart',e=>{swipeStart=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY}:null;},{passive:true});
-viewer.querySelector('img').addEventListener('touchend',e=>{if(!swipeStart||galleryControls.hidden)return;const dx=e.changedTouches[0].clientX-swipeStart.x,dy=e.changedTouches[0].clientY-swipeStart.y;swipeStart=null;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.5)showGallery(galleryIndex+(dx<0?1:-1));},{passive:true});
+viewerStage.addEventListener('touchstart',e=>{swipeStart=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY}:null;},{passive:true});
+viewerStage.addEventListener('touchcancel',()=>{swipeStart=null;},{passive:true});
+viewerStage.addEventListener('touchend',e=>{if(!swipeStart||galleryControls.hidden)return;const dx=e.changedTouches[0].clientX-swipeStart.x,dy=e.changedTouches[0].clientY-swipeStart.y;swipeStart=null;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.5)showGallery(galleryIndex+(dx<0?1:-1));},{passive:true});
 document.querySelectorAll('[data-format-choice]').forEach(a=>a.addEventListener('click',e=>{const tab=document.getElementById('tab-'+a.dataset.formatChoice);if(!tab)return;e.preventDefault();selectTab(tab,e.detail>0);tab.focus({preventScroll:true});document.querySelector('#play').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});}));
-viewer.querySelector('.dialog-close').addEventListener('click',()=>viewer.close());viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close();}});viewer.addEventListener('close',()=>{document.body.style.overflow='';viewerTrigger?.focus();});
-document.querySelectorAll('.view-option').forEach(button=>button.addEventListener('click',async()=>{const img=document.getElementById(button.dataset.target);button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));img.src=button.dataset.src;img.alt=button.dataset.alt;img.closest('.zoom-image').dataset.image=button.dataset.src;if(button.dataset.label)document.querySelector('#kit-caption').textContent=button.dataset.label;try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.2,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:280,easing:'cubic-bezier(.23,1,.32,1)'});}));
+viewer.querySelector('.dialog-close').addEventListener('click',()=>viewer.close());viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close();}});viewer.addEventListener('close',()=>{imageRequest++;swipeStart=null;document.body.style.overflow=bodyOverflow;viewerTrigger?.focus({preventScroll:true});});
+document.querySelectorAll('.view-option').forEach(button=>button.addEventListener('click',async()=>{const img=document.getElementById(button.dataset.target);button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));img.removeAttribute('srcset');img.src=galleryAsset(button.dataset.src)?.src||button.dataset.src;img.alt=button.dataset.alt;img.closest('.zoom-image').dataset.image=button.dataset.src;if(button.dataset.label)document.querySelector('#kit-caption').textContent=button.dataset.label;try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.2,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:280,easing:'cubic-bezier(.23,1,.32,1)'});}));
 document.querySelector('.detail-point')?.addEventListener('click',e=>{const b=e.currentTarget;const open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(open));document.getElementById(b.getAttribute('aria-controls')).hidden=!open;b.firstElementChild.textContent=open?'−':'+';});
-document.querySelectorAll('.space-view').forEach(b=>b.addEventListener('click',async()=>{const img=document.querySelector('.space>img');img.src=b.dataset.src;img.alt=b.textContent==='Открытие'?'Фотография с открытия POUND4PADEL':'Вход в клуб POUND4PADEL';document.querySelectorAll('.space-view').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.35,transform:'scale(1.025)'},{opacity:1,transform:'scale(1)'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});}));
+document.querySelectorAll('.space-view').forEach(b=>b.addEventListener('click',async()=>{const img=document.querySelector('.space>img');img.removeAttribute('srcset');img.src=galleryAsset(b.dataset.src)?.src||b.dataset.src;img.alt=b.textContent==='Открытие'?'Фотография с открытия POUND4PADEL':'Вход в клуб POUND4PADEL';document.querySelectorAll('.space-view').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.35,transform:'scale(1.025)'},{opacity:1,transform:'scale(1)'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});}));
 const progress=document.createElement('div');progress.className='progress-bar';progress.setAttribute('aria-hidden','true');document.body.append(progress);
 let sceneFrame=false;function updateScenes(){sceneFrame=false;const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${max>0?scrollY/max:0})`;if(reduced.matches)return;const scene=document.querySelector('.equipment-scene');if(!scene)return;const r=scene.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const k=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));scene.querySelector('img').style.transform=`scale(${.97+k*.03})`;}}
 window.addEventListener('scroll',()=>{if(!sceneFrame){sceneFrame=true;requestAnimationFrame(updateScenes);}},{passive:true});

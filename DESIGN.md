@@ -44,3 +44,8 @@ Verified in Chromium at 1440px and 390px: navigation open/close and keyboard foc
 
 ## Text-relative icons, 15 November 2026
 Astra reference 687d26cd-a3a1-4cd1-9c91-c1207475a563 demonstrates cap-relative icon sizing, rather than a replacement website layout. Reviewed with get_design_context and frames at 0, 2.76 and 7.48 seconds. Inline control icons now use 1.4cap with an em fallback; the factor compensates for whitespace inside the existing 24-unit SVG viewboxes. Gaps use .65em. Stacked game choices, standalone illustrations, branding and existing animation remain unchanged. Verified five main pages at 390/1440px, and a 14-to-28px text enlargement produced exactly 2x icon scaling. The reference presentation's green background and comparison UI are not part of the club website.
+
+## Visitor journeys and loading, 18 November 2026
+Preserve the accepted visual direction. Court CTAs open the existing /free schedule; first games, coaching, women’s day, equipment and partnerships use contextual WhatsApp requests, never imply confirmed booking. Partnerships use the common club number and carry the selected 3/5/7-court concept. Analytics is postponed by the owner.
+Responsive WebP images and WOFF2 variable fonts preserve source originals. Run node scripts/build-css.mjs after editing source CSS; scripts/css-sources.json preserves cascade order and each page loads one hashed bundle.
+The gallery independently adapts the Astra reference 68a6ea97-2c8d-44d1-98b3-8a83b22130ce: full image without crop, compact thumbnails to the left on desktop and below on mobile, visible caption, loading/error/retry. No framework added.
