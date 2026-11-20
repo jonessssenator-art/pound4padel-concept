@@ -432,6 +432,19 @@ html[data-input=keyboard] .site-experience .media-action{transition:none}
 @media(max-width:650px){#main .questions{gap:10px}#main .faq-item>summary{padding:20px;gap:16px;min-height:76px;font-size:16px}#main .faq-item .faq-answer{padding:0 20px 20px}#main .faq-answer>p{font-size:14px;line-height:1.75}#main .faq-item>summary .faq-action{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#main .faq-item{transition:none}}
 
+/* club-walk.css */
+/* A consistent 3:2 contact sheet; full photographs remain in the viewer. */
+.club-walk .section-heading{align-items:end}
+.walk-route{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+.walk-photo{margin:0;min-width:0}
+.walk-zoom{display:block;width:100%;aspect-ratio:3/2;padding:0;border:0;border-radius:12px;background:#142631;cursor:zoom-in;overflow:hidden}
+.walk-zoom img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 220ms var(--ease-out)}
+.walk-zoom:focus-visible{outline:2px solid #f3f0e7;outline-offset:5px}
+.walk-photo figcaption{margin-top:12px;font-size:14px;line-height:1.5;color:#c8d0d4}
+@media(hover:hover) and (pointer:fine){.walk-zoom:hover img{transform:scale(1.025)}}
+@media(max-width:650px){.walk-route{grid-template-columns:1fr;gap:24px}.walk-zoom{border-radius:10px}.walk-photo figcaption{font-size:13px;margin-top:10px}.club-walk .section-heading h2{font-size:42px}}
+@media(prefers-reduced-motion:reduce){.walk-zoom img{transition:none;transform:none!important}}
+
 /* liquid-glass.css */
 /* Liquid Glass finish for the published composition. */
 :root{--glass-fill:linear-gradient(125deg,#e5f5ff28,#c6e5ff0c 46%,#c8e6ff20);--glass-edge:1px solid #e9f6ff70;--glass-shadow:inset 0 1px 0 #ffffffa3,inset 1px 0 1px #ffffff35,inset 0 -1px 1px #ffffff26,0 8px 30px #00162630}
@@ -477,6 +490,40 @@ html[data-chrome=compact] body .footer-invite h2{font-size:clamp(36px,4vw,56px);
 html[data-chrome=compact] body .site-footer>a:first-of-type,html[data-chrome=compact] body .site-footer>a:first-of-type img{width:150px}
 html[data-chrome=compact] body .site-footer nav{gap:8px 24px}
 @media(max-width:420px){html[data-chrome=compact] body .site-footer nav{display:grid;grid-template-columns:repeat(2,auto);gap:0 24px;text-align:center}}
+
+/* The header sits in the photograph; only the action is a filled surface. */
+html[data-chrome=compact] body .header.header{top:0;width:calc(100% - 80px);max-width:none;height:80px;margin:0 40px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+html[data-chrome=compact] body.home-page .header.header{position:absolute;inset:0 40px auto;width:auto;margin:0}
+html[data-chrome=compact] body:not(.home-page) .header.header{position:relative}
+html[data-chrome=compact] body .header.header .brand{left:0;top:50%;transform:translateY(-50%);width:150px}
+html[data-chrome=compact] body .header.header .brand img{width:150px}
+html[data-chrome=compact] body .header.header .header-cta{top:18px;right:0;min-height:44px;padding:10px 18px;border:0;border-radius:6px;background:#f3f0e7;color:#183269;box-shadow:none;font-size:12px;line-height:1.4;white-space:nowrap;max-width:none}
+html[data-chrome=compact] body .header.header .header-cta::before{display:none}
+html[data-chrome=compact] body .header.header .header-cta svg{display:none}
+html[data-chrome=compact] body .header.header .menu{left:auto;right:176px;width:84px;height:44px;padding:10px 0;align-items:flex-end;gap:6px}
+html[data-chrome=compact] body .header.header .menu::after{content:'Меню';position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:12px;line-height:1.4;color:#f3f0e7}
+html[data-chrome=compact] body .header.header .menu span{width:22px}
+html[data-chrome=compact] body .header.header #navigation.motion-nav{inset:72px 0 auto auto;width:min(340px,100%);padding:12px;border-radius:10px;background:#112c3c;box-shadow:0 18px 40px #0004;backdrop-filter:none;-webkit-backdrop-filter:none;max-height:calc(100dvh - 92px);overflow:auto;transform-origin:top right}
+html[data-chrome=compact] body .header.header #navigation.motion-nav a{border-radius:4px}
+@media(max-width:650px){
+ html[data-chrome=compact] body .header.header{width:calc(100% - 32px);height:70px;margin:0 16px}
+ html[data-chrome=compact] body.home-page .header.header{inset:0 16px auto;width:auto;margin:0}
+ html[data-chrome=compact] body .header.header .brand,html[data-chrome=compact] body .header.header .brand img{width:110px}
+ html[data-chrome=compact] body .header.header .header-cta{top:13px;right:0;width:auto;max-width:none;min-height:44px;padding:10px 12px;font-size:11px}
+ html[data-chrome=compact] body .header.header .menu{right:124px;width:44px;padding:10px;align-items:center}
+ html[data-chrome=compact] body .header.header .menu::after{display:none}
+ html[data-chrome=compact] body .header.header #navigation.motion-nav{top:64px;max-height:calc(100dvh - 80px);width:min(340px,100%)}
+}
+@media(max-width:360px){
+ html[data-chrome=compact] body .header.header .brand,html[data-chrome=compact] body .header.header .brand img{width:96px}
+ html[data-chrome=compact] body .header.header .menu{right:112px}
+ html[data-chrome=compact] body .header.header .header-cta{font-size:10px;padding-inline:10px}
+}
+/* On a narrow portrait, keep controls above the face in a single 64px row. */
+@media(max-width:650px){
+ html[data-chrome=compact] body.home-page .header.header{position:relative;inset:auto;width:calc(100% - 32px);height:64px;margin:0 16px}
+ html[data-chrome=compact] body.home-page .header.header .header-cta{top:10px}
+}
 
 /* layout-polish.css */
 /* Keep the complete architectural renders in their native 3:2 frame. */
