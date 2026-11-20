@@ -69,3 +69,13 @@
     bottom: 24px;
   }
 }
+
+/* Original HAN00031 photograph: retain the camera's portrait proportions. */
+.home-page .hero{background:#0c1922}
+@media(min-width:651px){
+ .home-page .hero-photo{left:50%;right:auto;transform:translateX(-50%);width:auto;max-width:none;object-fit:contain;object-position:center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+}
+@media(max-width:650px){
+ .home-page .hero-photo{object-position:center 38%}
+}
+@media(min-width:951px){.home-page .hero-photo{height:120%;top:-4%}}

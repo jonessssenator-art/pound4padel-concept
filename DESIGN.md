@@ -52,3 +52,6 @@ The gallery independently adapts the Astra reference 68a6ea97-2c8d-44d1-98b3-8a8
 
 ## Header and portrait correction, 20 November 2026
 Replaced the oversized header capsule with a transparent desktop row, left logo and right menu/booking control. Mobile uses a compact row above the portrait to avoid covering the face. Retouched hero removes the supporting hand beneath the racket; the free arm hangs naturally. Built-in image generation was used for the localized photo edit; originals retained. Responsive WebP versions keep download costs bounded.
+
+## Original photograph restored, 20 November 2026
+The owner rejected synthetic anatomy and requested source photographs. Homepage now uses original HAN00031.JPG from the supplied Islam photo session (cloud.mail.ru/public/13pc/s5VSemV89/Джпг). Only proportional resizing/compression, no generated face, limbs, racket or background. CSS preserves portrait proportions at desktop and fits the original photo on mobile. This supersedes the earlier generated hero edits.
