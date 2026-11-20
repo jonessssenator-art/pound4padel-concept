@@ -55,3 +55,6 @@ Replaced the oversized header capsule with a transparent desktop row, left logo 
 
 ## Original photograph restored, 20 November 2026
 The owner rejected synthetic anatomy and requested source photographs. Homepage now uses original HAN00031.JPG from the supplied Islam photo session (cloud.mail.ru/public/13pc/s5VSemV89/Джпг). Only proportional resizing/compression, no generated face, limbs, racket or background. CSS preserves portrait proportions at desktop and fits the original photo on mobile. This supersedes the earlier generated hero edits.
+
+## Approved branded pose, 20 November 2026
+Owner approved the separately reviewed bent-arm portrait with POUND4PADEL racket. Uses islam-branded-pose assets based on original HAN00029 and the product reference. This is an image_gen edit, not an unmodified photograph; skin/hand retouch was disclosed before approval. Existing header, layout and logo intro preserved.
