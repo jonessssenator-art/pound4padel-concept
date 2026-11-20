@@ -798,3 +798,17 @@ html[data-chrome=compact] body .footer-invite h2{font-size:clamp(40px,4.5vw,64px
 }
 
 .investor-discuss{margin-top:24px}
+
+/* loader.css */
+html.p4p-draw-loading{overflow:hidden;animation:p4p-draw-unlock 1ms 5200ms forwards}
+.p4p-draw-loader{position:fixed;inset:0;z-index:10001;display:grid;place-items:center;background:#000;color:#dfd8c6;touch-action:none;overscroll-behavior:contain;opacity:1;transition:opacity 240ms cubic-bezier(.23,1,.32,1);animation:p4p-draw-safety 1ms 5000ms forwards}
+.p4p-draw-loader.p4p-draw-leaving{opacity:0;pointer-events:none}
+.p4p-draw-logo{width:min(84vw,1000px)}.p4p-draw-logo svg{display:block;width:100%;height:auto;overflow:visible}
+.p4p-four{color:#d4352c}.p4p-four-outer,.p4p-four-inner{stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:p4p-logo-trace 1100ms ease-in-out both}
+.p4p-four-inner{animation-duration:650ms;animation-delay:500ms}
+.p4p-line{stroke:#dfd8c6;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:p4p-logo-trace 950ms ease-in-out calc(950ms + var(--rank)*140ms) both,p4p-line-away 420ms ease-in-out calc(2490ms + var(--rank)*45ms) forwards}
+.p4p-fill{opacity:0;animation:p4p-logo-fill 420ms ease-in-out calc(2490ms + var(--rank)*45ms) forwards}
+@keyframes p4p-logo-trace{0%{stroke-dashoffset:1;opacity:0}1%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes p4p-logo-fill{to{opacity:1}}@keyframes p4p-line-away{to{opacity:0}}
+@keyframes p4p-draw-safety{to{visibility:hidden;pointer-events:none}}@keyframes p4p-draw-unlock{to{overflow:auto}}
+@media(prefers-reduced-motion:reduce){.p4p-draw-loader{transition:none}.p4p-line{animation:none;opacity:0}.p4p-fill{animation:none;opacity:1}.p4p-four{mask:none}.p4p-four-outer,.p4p-four-inner{animation:none;opacity:1;stroke-dashoffset:0}}
