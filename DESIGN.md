@@ -49,3 +49,6 @@ Astra reference 687d26cd-a3a1-4cd1-9c91-c1207475a563 demonstrates cap-relative i
 Preserve the accepted visual direction. Court CTAs open the existing /free schedule; first games, coaching, women’s day, equipment and partnerships use contextual WhatsApp requests, never imply confirmed booking. Partnerships use the common club number and carry the selected 3/5/7-court concept. Analytics is postponed by the owner.
 Responsive WebP images and WOFF2 variable fonts preserve source originals. Run node scripts/build-css.mjs after editing source CSS; scripts/css-sources.json preserves cascade order and each page loads one hashed bundle.
 The gallery independently adapts the Astra reference 68a6ea97-2c8d-44d1-98b3-8a83b22130ce: full image without crop, compact thumbnails to the left on desktop and below on mobile, visible caption, loading/error/retry. No framework added.
+
+## Header and portrait correction, 20 November 2026
+Replaced the oversized header capsule with a transparent desktop row, left logo and right menu/booking control. Mobile uses a compact row above the portrait to avoid covering the face. Retouched hero removes the supporting hand beneath the racket; the free arm hangs naturally. Built-in image generation was used for the localized photo edit; originals retained. Responsive WebP versions keep download costs bounded.
