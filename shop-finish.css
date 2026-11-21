@@ -66,7 +66,6 @@
 .equipment-page .shop-contact h2 {font-size:clamp(38px,4.5vw,64px);line-height:1.12;margin:0 0 22px;color:#dfd8c6;}
 .equipment-page .shop-contact p {max-width:49ch;margin:0 auto 30px;font-size:16px;line-height:1.65;color:#dce3e5;}
 .equipment-page .shop-contact .ui-button {background:#dfd8c6;border-color:#dfd8c6;color:#10212b;padding:14px 24px;gap:20px;box-shadow:none;}
-.shop-contact .ui-button span {font-size:22px;line-height:1;}
 .equipment-page .shop-contact .ui-button:hover {background:#f1ecdf;color:#10212b;}
 @media(max-width:700px){
  .equipment-page .shop-contact {margin:16px 20px 40px;padding:40px 24px;min-height:0;}
