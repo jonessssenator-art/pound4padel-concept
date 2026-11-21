@@ -19,7 +19,8 @@
     "astra-motion.css",
     "icon-typography.css",
     "loader.css",
-    "header-finish.css"
+    "header-finish.css",
+    "visitor-guide.css"
   ],
   "club": [
     "style.css",
@@ -41,7 +42,8 @@
     "astra-motion.css",
     "icon-typography.css",
     "loader.css",
-    "header-finish.css"
+    "header-finish.css",
+    "visitor-guide.css"
   ],
   "women": [
     "style.css",
@@ -63,7 +65,8 @@
     "astra-motion.css",
     "icon-typography.css",
     "loader.css",
-    "header-finish.css"
+    "header-finish.css",
+    "visitor-guide.css"
   ],
   "equipment": [
     "style.css",
@@ -84,7 +87,8 @@
     "astra-motion.css",
     "icon-typography.css",
     "loader.css",
-    "header-finish.css"
+    "header-finish.css",
+    "visitor-guide.css"
   ],
   "investors": [
     "style.css",
@@ -107,7 +111,8 @@
     "astra-motion.css",
     "icon-typography.css",
     "loader.css",
-    "header-finish.css"
+    "header-finish.css",
+    "visitor-guide.css"
   ],
   "privacy": [
     "typography.css",
