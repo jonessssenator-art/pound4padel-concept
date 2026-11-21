@@ -632,6 +632,33 @@ body .site-footer .club-contacts .contact-phone {
   }
 }
 
+/* Legal links share the photographic footer with the back-to-top control. */
+body .site-footer .footer-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px 32px;
+  width: min(100%, 960px);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.footer-bottom a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: #b9cbd480;
+}
+.footer-bottom a:last-child { justify-self: end; }
+.footer-bottom .footer-top { justify-content: center; text-decoration: none; }
+.footer-bottom a:hover { text-decoration-color: currentColor; }
+@media (max-width: 700px) {
+  body .site-footer .footer-bottom { grid-template-columns: 1fr; gap: 4px; }
+  .footer-bottom a, .footer-bottom a:last-child { justify-self: center; text-align: center; }
+  .footer-bottom .footer-top { grid-row: 3; margin-top: 12px; }
+}
+
 /* astra-motion.css */
 /* Web adaptations of the selected Astra interactions, in POUND4PADEL's tokens. */
 .motion-control{isolation:isolate;overflow:hidden}
