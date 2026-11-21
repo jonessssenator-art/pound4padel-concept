@@ -968,6 +968,10 @@ html[data-chrome=compact] body .header { max-width: none; }
  html[data-chrome=compact] body .header #navigation.motion-nav a:hover {background:none;color:#fff6e5;}
 }
 
+/* Scroll position follows the capsule perimeter; no autonomous animation. */
+body .header>.header-scroll-progress {position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:4;fill:none;}
+.header-scroll-progress path {fill:none;stroke:#e0ec87;stroke-width:2;stroke-linecap:butt;vector-effect:non-scaling-stroke;opacity:0;}
+
 /* visitor-guide.css */
 /* Practical visitor information within the approved visual language. */
 .visitor-guide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:64px;background:#111f29;align-items:start}

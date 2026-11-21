@@ -89,9 +89,26 @@ viewer.querySelector('.dialog-close').addEventListener('click',()=>viewer.close(
 document.querySelectorAll('.view-option:not(.kit-color)').forEach(button=>button.addEventListener('click',async()=>{const img=document.getElementById(button.dataset.target);button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));img.src=button.dataset.src;img.alt=button.dataset.alt;const zoom=img.closest('.zoom-image');if(zoom){zoom.dataset.image=button.dataset.detailImage||button.dataset.src;if(button.dataset.detailCaption)zoom.dataset.caption=button.dataset.detailCaption;}if(img.id==='racket-view'){const point=document.querySelector('#racket .detail-point');point.hidden=!button.dataset.src.endsWith('racket-front.png');point.setAttribute('aria-expanded','false');point.firstElementChild.textContent='+';document.getElementById('detail-carbon').hidden=true;}if(button.dataset.label)document.querySelector('#kit-caption').textContent=button.dataset.label;try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.2,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:280,easing:'cubic-bezier(.23,1,.32,1)'});}));
 document.querySelector('.detail-point')?.addEventListener('click',e=>{const b=e.currentTarget;const open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(open));document.getElementById(b.getAttribute('aria-controls')).hidden=!open;b.firstElementChild.textContent=open?'−':'+';});
 document.querySelectorAll('.space-view').forEach(b=>b.addEventListener('click',async()=>{const img=document.querySelector('.space>img');img.src=b.dataset.src;img.alt=b.textContent==='Открытие'?'Фотография с открытия POUND4PADEL':'Вход в клуб POUND4PADEL';document.querySelectorAll('.space-view').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.35,transform:'scale(1.025)'},{opacity:1,transform:'scale(1)'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});}));
-const progress=document.createElement('div');progress.className='progress-bar';progress.setAttribute('aria-hidden','true');document.body.append(progress);
-let sceneFrame=false;function updateScenes(){sceneFrame=false;const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${max>0?scrollY/max:0})`;if(reduced.matches)return;const scene=document.querySelector('.equipment-scene');if(!scene)return;const r=scene.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const k=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));scene.querySelector('img').style.transform=`scale(${.97+k*.03})`;}}
+const progressHeader=document.querySelector('.header');
+const progress=document.createElementNS('http://www.w3.org/2000/svg','svg');
+progress.classList.add('header-scroll-progress');progress.setAttribute('aria-hidden','true');progress.setAttribute('focusable','false');
+const progressPath=document.createElementNS('http://www.w3.org/2000/svg','path');
+progressPath.setAttribute('pathLength','100');progressPath.setAttribute('stroke-dasharray','100');progressPath.setAttribute('stroke-dashoffset','100');
+progress.append(progressPath);progressHeader?.append(progress);
+function sizeProgress(){
+ if(!progressHeader)return;
+ const w=progressHeader.clientWidth,h=progressHeader.clientHeight,inset=1;
+ const r=Math.max(0,Math.min(parseFloat(getComputedStyle(progressHeader).borderTopLeftRadius)||0,w/2,h/2)-inset);
+ const right=w-inset,bottom=h-inset;
+ progress.setAttribute('viewBox',`0 0 ${w} ${h}`);
+ progressPath.setAttribute('d',`M ${w/2} ${inset} H ${right-r} A ${r} ${r} 0 0 1 ${right} ${inset+r} V ${bottom-r} A ${r} ${r} 0 0 1 ${right-r} ${bottom} H ${inset+r} A ${r} ${r} 0 0 1 ${inset} ${bottom-r} V ${inset+r} A ${r} ${r} 0 0 1 ${inset+r} ${inset} H ${w/2}`);
+ updateScenes();
+}
+let sceneFrame=false;function updateScenes(){sceneFrame=false;const max=document.documentElement.scrollHeight-innerHeight;const fraction=max>0?Math.max(0,Math.min(1,scrollY/max)):0;progressPath.setAttribute("stroke-dashoffset",String(100*(1-fraction)));progressPath.style.opacity=fraction>0?"1":"0";if(reduced.matches)return;const scene=document.querySelector('.equipment-scene');if(!scene)return;const r=scene.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const k=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));scene.querySelector('img').style.transform=`scale(${.97+k*.03})`;}}
 window.addEventListener('scroll',()=>{if(!sceneFrame){sceneFrame=true;requestAnimationFrame(updateScenes);}},{passive:true});
+
+if(progressHeader){const progressResize=new ResizeObserver(sizeProgress);progressResize.observe(progressHeader);progressResize.observe(document.body);sizeProgress();}
+window.addEventListener('pageshow',updateScenes);
 
 // A format selected on the home page opens the matching club panel.
 const requestedFormat = new URLSearchParams(location.search).get('format');
