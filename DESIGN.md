@@ -1,60 +1,29 @@
-# POUND4PADEL
+# POUND4PADEL: принятая основа
 
-Approved direction: full-width photographic first screen inspired by the user's first reference. Approved Islam photograph: assets/islam-refined.png. Do not regenerate his face or proportions. No other athlete images approved. Balls carry no branding. Racket and cream kit follow the supplied brandbook.
+Решение пользователя от 21 ноября 2026, текущий чат: привести версии в порядок, использовать показанную сохранённую версию основного домена плюс одобренный загрузчик. Этот документ заменяет прежние противоречивые указания о полноширинной шапке и другом портрете. Предыдущее состояние сохранено в Git.
 
-Palette: #101820 dark court surround; #1448a3 brand blue; #183269 secondary blue; #d4352c red; #dfd8c6 cream; #e0ec87 ball-derived accent. Typography: self-hosted Involve variable from brand source. Primary hero type sits either side of the central person. Mobile type is below his face, with a dark readability overlay. No fabricated reviews, prices or club metrics.
+## Что сохранять
 
-Sections: approved hero, macro balls, game format selector and interactive rally diagram, exact brand equipment imagery, architectural concept, practical FAQ, opening notice. Booking is explicitly unavailable until business details are supplied. Images of the athlete and balls are concept illustrations, disclosed in footer. Equipment and architecture are supplied brand material.
+- Стеклянная шапка-капсула по центру, логотип в центре, меню слева и кнопка бронирования справа.
+- Портрет первого экрана из доменной версии: assets/islam-likeness-corrected.jpg; сохранённые пропорции, кадрирование и расположение текста.
+- Содержание и взаимодействия пяти основных страниц из снимка домена от 20 ноября: главная, клуб, женский день, экипировка, инвесторам. Правовые страницы также из снимка.
+- Существующая тёмная палитра, типографика, фотографии клуба и архитектурные материалы. Не добавлять экспериментальный metal-finish.
+- Не переносить автоматически изменения из других папок и архивных веток. Отдельные дальнейшие улучшения выполнять поверх этой основы по задаче.
 
-Motion: one staggered hero entrance, subtle scroll response in the ball scene, user-controlled explanatory rally; reduced-motion support. Equipment hover restricted to fine pointers. Functional tabs, menu, FAQ and anchor navigation.
+## Загрузочный экран
 
-Refinement after user review: product windows use fixed responsive frames and object-fit: contain, never crop the kit. Added blue kit and original front/profile racket view, product image dialog, detail hotspot, alternate architecture angle. Hero and ball imagery share a navy edge fade. Product still-life uses the same source racket and plain balls. Scroll response, controlled rally, product reveal and short view-change animations respect reduced motion. No other generated people used.
+Прорисовывается контур 4, от центра прорисовываются POUND и PADEL, буквы заполняются бежевым. Оригинальная 4 остаётся контурной. Цвета с первого штриха: чёрный фон #000000, бежевые буквы #DFD8C6, красная 4 #D4352C. Никакого 3D, серебра, отражений или объёмной заливки.
 
-Racket correction: rejected generated equipment-scene.png. Main product scene now uses original racket-front.png from brandbook, showing front and profile without crop or distortion.
+Показ один раз за сеанс, ?intro=1 принудительно показывает анимацию. Поддерживаются пропуск кликом/клавишей, reduced motion и ограничение времени показа. Не блокировать доступ к сайту при сбое.
 
-Game-format section: replaced the rejected flat court diagram with a single full-width photographic court scene. Integrated keyboard-accessible format tabs and distinct CTA button. Tab changes animate copy and restrained crop/zoom; reduced motion disables camera motion. Empty court is an edited version of the supplied court photograph. No added athlete imagery.
+## Технический источник
 
-## Selected direction 1, November 2026
-User selected the rendered direction-one proposal. Full-width approved Islam hero, dark #0c1922 surroundings, cream type and ball-derived lime actions. Follow hero with a 1.7:1 photographic community/tournament pair; photos open in the existing image dialog. Real supplied documentary photos also replace the speculative architecture in the club section. Dark women's-Friday section retains its dedicated content and group image. Original equipment remains complete and uncropped with existing color/view controls. Existing motion and reduced-motion support retained. No new booking integration or opening-date claims; the supplied opening photos supersede the old upcoming-opening notice. Layout overrides are isolated in direction-one.css. Responsive browser checks at 1400 and 390 pixels.
+Рабочая папка: site/ в основном проекте, самостоятельный Git-репозиторий. Ресурсы собраны из сохранённых CSS/JS домена и локальных исходных ассетов; сервер домена при восстановлении недоступен. Это восстановленная согласованная база, не утверждение о свежем зеркале сервера.
 
-## Mandatory user preference
-No arrow icons or arrow glyphs in any website buttons, links, navigation or decoration. Use text controls without arrows. Do not add user-facing references to AI, generation, synthetic imagery or related production notes, including alt text and metadata. These preferences supersede earlier footer-disclosure guidance. Preserve accurate functionality notices such as unavailable booking.
+CSS редактировать в исходных файлах, указанных в scripts/css-sources.json, затем выполнять node scripts/build-css.mjs. Отдельные site-*.css являются результатами сборки.
 
-## Selected typography
-User chose option 3: self-hosted Oswald weight 500 for headings and Manrope for body, navigation and buttons. typography.css overrides the previous Involve typography. No arrow icons or production notes.
+## Проверка и публикация
 
-## Interactive components, November 2026
-Removed solid lime rectangular CTAs. Use cream or outlined rounded controls with 160ms press feedback and reduced-motion support. Hero has a compact three-choice game dock, selecting and focusing the matching game tab. Game tabs use a segmented selected state. Club photo viewer includes four supplied club photos, caption, thumbnails, previous/next text controls, keyboard navigation and horizontal touch swipe. Equipment stays in the same viewer without gallery controls. No arrow glyphs or decorative counters. Implemented in interactions.css and app.js.
+Проверять фактический вид на десктопе и телефоне, загрузчик и затронутые взаимодействия. Использовать отдельный тестовый браузер, закрывать его в finally; не запускать личный Яндекс через Playwright.
 
-
-## Component finish, November 2026
-Shared styles live in components.css and components.js. Preserve the current hero assets and copy when refining controls. Content width caps at 1344px; page gutters are 20px on mobile, 32px on tablet, and at least 32px on desktop. Use the 8/16/24/32/48/64/80px spacing scale. Primary and secondary actions share ui-button: 48px minimum height, 24px horizontal padding, 14px Manrope. Compact controls are 44px high. Media corners are 12px. Segmented controls use ui-segmented with one sliding indicator, matching keyboard-accessible tab semantics. Numerals use lining figures; investor selectors and PDF metadata use tabular figures.
-Pointer feedback takes 160ms; state changes take 180-220ms with the existing ease-out curve. Native dialogs and FAQ disclosure retain keyboard and reduced-motion behavior. Avoid repeated scroll entrances on reading content. Mobile gallery uses a stable 3:2 image frame without unnecessary vertical space. Keep section headlines and their supporting copy aligned to the corresponding content columns.
-
-
-## Multi-page structure, November 2026
-The home page introduces four destinations with compact visual previews. club.html contains documentary photos, the club gallery, game-format tabs and first-visit FAQ. women.html explains Friday play and visitor preparation. equipment.html retains the uncropped product gallery and colour/view controls. investors.html contains sourced architectural concepts, enlarged plan images, the area comparison and original PDF. All pages use the same header, footer, fonts, controls and spacing tokens; composition lives in pages.css. The current page is marked with aria-current. Home format choices use club.html?format=start|friends|practice#play. Old #play, #first and #availability links on the home page redirect to the club page. Do not invent prices, booking integration, equipment availability or investment terms.
-
-## Astra motion adaptation, 14 November 2026
-Six selected interactions integrated into the existing design: compact glass navigation unfolds with larger Oswald links; the booking CTA has a bounded 5px pointer attraction; controls show a short ripple; the home title appears with a 4px blur; the club photograph expands with natural scroll; five existing tournament photographs form an expanding desktop strip and a native horizontally scrolling mobile gallery. Complete images remain available in the existing dialog. Existing booking URLs, text, photographs and product controls are preserved.
-
-Reference previews reviewed: astra-ui.com/animations/magnetic-button, ripple-button, scroll-zoom-reveal, image-flow-carousel, tour-menu and dia-text. The magnetic source supplied by Astra targets React Native/Expo; this site uses a small native JavaScript/CSS adaptation. Pro menu/gallery source was unavailable and was not used; these are independently implemented web interactions. No Expo, GSAP, Lenis or Vanta dependency added: bounded effects use CSS, WAAPI and a single on-demand spring frame loop. Existing scrolling remains native.
-
-Verified in Chromium at 1440px and 390px: navigation open/close and keyboard focus; photo expansion across scroll positions; magnetic hover and release; ripple creation/cleanup; expanding gallery, dialog next/close and horizontal mobile scroll; reduced-motion fallback. Seven touched pages checked for page errors and horizontal overflow. SEO/assets/CSP check passed. Browser viewport emulation does not constitute physical-device performance testing.
-
-## Text-relative icons, 15 November 2026
-Astra reference 687d26cd-a3a1-4cd1-9c91-c1207475a563 demonstrates cap-relative icon sizing, rather than a replacement website layout. Reviewed with get_design_context and frames at 0, 2.76 and 7.48 seconds. Inline control icons now use 1.4cap with an em fallback; the factor compensates for whitespace inside the existing 24-unit SVG viewboxes. Gaps use .65em. Stacked game choices, standalone illustrations, branding and existing animation remain unchanged. Verified five main pages at 390/1440px, and a 14-to-28px text enlargement produced exactly 2x icon scaling. The reference presentation's green background and comparison UI are not part of the club website.
-
-## Visitor journeys and loading, 18 November 2026
-Preserve the accepted visual direction. Court CTAs open the existing /free schedule; first games, coaching, women’s day, equipment and partnerships use contextual WhatsApp requests, never imply confirmed booking. Partnerships use the common club number and carry the selected 3/5/7-court concept. Analytics is postponed by the owner.
-Responsive WebP images and WOFF2 variable fonts preserve source originals. Run node scripts/build-css.mjs after editing source CSS; scripts/css-sources.json preserves cascade order and each page loads one hashed bundle.
-The gallery independently adapts the Astra reference 68a6ea97-2c8d-44d1-98b3-8a83b22130ce: full image without crop, compact thumbnails to the left on desktop and below on mobile, visible caption, loading/error/retry. No framework added.
-
-## Header and portrait correction, 20 November 2026
-Replaced the oversized header capsule with a transparent desktop row, left logo and right menu/booking control. Mobile uses a compact row above the portrait to avoid covering the face. Retouched hero removes the supporting hand beneath the racket; the free arm hangs naturally. Built-in image generation was used for the localized photo edit; originals retained. Responsive WebP versions keep download costs bounded.
-
-## Original photograph restored, 20 November 2026
-The owner rejected synthetic anatomy and requested source photographs. Homepage now uses original HAN00031.JPG from the supplied Islam photo session (cloud.mail.ru/public/13pc/s5VSemV89/Джпг). Only proportional resizing/compression, no generated face, limbs, racket or background. CSS preserves portrait proportions at desktop and fits the original photo on mobile. This supersedes the earlier generated hero edits.
-
-## Approved branded pose, 20 November 2026
-Owner approved the separately reviewed bent-arm portrait with POUND4PADEL racket. Uses islam-branded-pose assets based on original HAN00029 and the product reference. This is an image_gen edit, not an unmodified photograph; skin/hand retouch was disclosed before approval. Existing header, layout and logo intro preserved.
+Публиковать через PR в codex/visual-concept на GitHub Pages. Основной домен pound-4-padel.ru обновлять позднее по отдельному запросу и после проверки доступа. Не выдавать GitHub Pages за основной домен.
