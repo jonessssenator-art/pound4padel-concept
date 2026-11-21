@@ -9,7 +9,6 @@ function selectInvestorTab(selected, animate = false) {
     tab.tabIndex = active ? 0 : -1;
     document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
   });
-  updatePartnershipLinks(selected.id.replace('investor-tab-', ''));
   const panel = document.getElementById(selected.getAttribute("aria-controls"));
   if (animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const easing = getComputedStyle(document.documentElement).getPropertyValue('--ease-out').trim() || 'cubic-bezier(.23,1,.32,1)';
@@ -31,17 +30,3 @@ investorTabs.forEach((tab, index) => {
     investorTabs[next].focus();
   });
 });
-
-function updatePartnershipLinks(courts) {
-  if (!['3', '5', '7'].includes(courts)) return;
-  const label = courts === '3' ? '3 корта' : courts + ' кортов';
-  const message = 'Здравствуйте! Пишу по партнёрству с POUND4PADEL. Интересует концепция на ' + label + '. Хочу обсудить площадку и условия сотрудничества.';
-  document.querySelectorAll('[data-partnership-link]').forEach(link => {
-    link.href = 'https://wa.me/79628988884?text=' + encodeURIComponent(message);
-  });
-  document.querySelectorAll('.partnership-choice').forEach(text => {
-    text.textContent = 'Концепция: ' + label;
-  });
-}
-const initialInvestorTab = investorTabs.find(tab => tab.getAttribute('aria-selected') === 'true');
-if (initialInvestorTab) updatePartnershipLinks(initialInvestorTab.id.replace('investor-tab-', ''));
