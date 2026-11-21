@@ -28,3 +28,7 @@
  .kit-showcase .visitor-contact {order:3;padding:12px 24px 28px;}
  .equipment-racket-details .racket-card {display:block;}
 }
+
+/* Keep color swatches true to the fabric even when selected. */
+.kit-showcase .swatches .cream {background:#dfd8c6;color:#183269;}
+.kit-showcase .swatches .blue {background:#204b99;color:#fff;}
