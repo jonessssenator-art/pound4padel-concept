@@ -848,3 +848,35 @@ p.visitor-contact{font-size:14px;line-height:1.7;margin:16px 0 0;max-width:100%}
  .play .panel .visitor-actions{gap:4px}
  .play .panel .visitor-contact{margin:0}
 }
+
+/* shop-finish.css */
+/* Product presentation follows the established racket scene. */
+.kit-showcase {position:relative;display:grid;grid-template-columns:42% 58%;grid-template-rows:1fr auto auto;min-height:580px;margin:32px 0 48px;background:#101a1e;border:1px solid #dfd8c626;border-radius:14px;overflow:hidden;color:#dfd8c6;}
+.equipment .kit-showcase .product-window {grid-column:2;grid-row:1/4;width:100%;height:580px;max-height:none;border-radius:0;background:#101a1e;}
+.equipment .kit-showcase .product-window>button {border-radius:0;background:none;}
+.equipment .kit-showcase .product-window img {object-fit:contain;transform:scale(1.12);}
+.equipment .kit-showcase .product-window>button:hover img {transform:scale(1.12);}
+.kit-showcase figcaption {grid-column:1;grid-row:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:24px;padding:48px 0 20px 48px;}
+.equipment .kit-showcase h3 {font-size:clamp(36px,3.8vw,58px);line-height:1.15;margin:0 0 24px;}
+.kit-showcase .kit-description {font-size:15px;line-height:1.65;max-width:26ch;margin-bottom:24px;}
+.kit-showcase #kit-caption {font-size:14px;color:#dfd8c6;}
+.kit-showcase .visitor-actions {grid-column:1;grid-row:2;padding:0 0 0 48px;margin:0;}
+.kit-showcase .visitor-contact {grid-column:1;grid-row:3;padding:12px 0 40px 48px;margin:0;font-size:12px;}
+.kit-showcase .media-action {bottom:28px;}
+.equipment-racket-details {grid-template-columns:minmax(0,1fr);}
+.equipment-racket-details .racket-card {display:grid;grid-template-columns:1fr 1fr;column-gap:40px;align-items:center;}
+.equipment-racket-details .product-window {grid-column:1;grid-row:1/4;}
+.equipment-racket-details .racket-card>figcaption,.equipment-racket-details .racket-card>.visitor-actions,.equipment-racket-details .racket-card>.visitor-contact {grid-column:2;}
+.branches-pending {min-height:65svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding-block:80px;}
+.branches-pending p {font-size:18px;color:#dfd8c6;margin:0;}
+.branches-pending h1 {font-size:clamp(48px,8vw,100px);line-height:1.1;margin:0 0 12px;}
+@media(max-width:700px){
+ .kit-showcase {display:flex;flex-direction:column;min-height:0;margin-block:24px 40px;}
+ .kit-showcase figcaption {order:0;padding:28px 24px 0;gap:20px;}
+ .kit-showcase h3 {font-size:36px;margin-bottom:16px;}
+ .kit-showcase .kit-description {margin-bottom:16px;}
+ .equipment .kit-showcase .product-window {order:1;height:440px;}
+ .kit-showcase .visitor-actions {order:2;padding:0 24px;}
+ .kit-showcase .visitor-contact {order:3;padding:12px 24px 28px;}
+ .equipment-racket-details .racket-card {display:block;}
+}

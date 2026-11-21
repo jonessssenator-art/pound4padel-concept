@@ -43,7 +43,8 @@
     "icon-typography.css",
     "loader.css",
     "header-finish.css",
-    "visitor-guide.css"
+    "visitor-guide.css",
+    "shop-finish.css"
   ],
   "women": [
     "style.css",
@@ -88,7 +89,8 @@
     "icon-typography.css",
     "loader.css",
     "header-finish.css",
-    "visitor-guide.css"
+    "visitor-guide.css",
+    "shop-finish.css"
   ],
   "investors": [
     "style.css",
