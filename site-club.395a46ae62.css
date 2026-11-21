@@ -880,3 +880,7 @@ p.visitor-contact{font-size:14px;line-height:1.7;margin:16px 0 0;max-width:100%}
  .kit-showcase .visitor-contact {order:3;padding:12px 24px 28px;}
  .equipment-racket-details .racket-card {display:block;}
 }
+
+/* Keep color swatches true to the fabric even when selected. */
+.kit-showcase .swatches .cream {background:#dfd8c6;color:#183269;}
+.kit-showcase .swatches .blue {background:#204b99;color:#fff;}
