@@ -432,6 +432,19 @@ html[data-input=keyboard] .site-experience .media-action{transition:none}
 @media(max-width:650px){#main .questions{gap:10px}#main .faq-item>summary{padding:20px;gap:16px;min-height:76px;font-size:16px}#main .faq-item .faq-answer{padding:0 20px 20px}#main .faq-answer>p{font-size:14px;line-height:1.75}#main .faq-item>summary .faq-action{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#main .faq-item{transition:none}}
 
+/* club-walk.css */
+/* A consistent 3:2 contact sheet; full photographs remain in the viewer. */
+.club-walk .section-heading{align-items:end}
+.walk-route{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+.walk-photo{margin:0;min-width:0}
+.walk-zoom{display:block;width:100%;aspect-ratio:3/2;padding:0;border:0;border-radius:12px;background:#142631;cursor:zoom-in;overflow:hidden}
+.walk-zoom img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 220ms var(--ease-out)}
+.walk-zoom:focus-visible{outline:2px solid #f3f0e7;outline-offset:5px}
+.walk-photo figcaption{margin-top:12px;font-size:14px;line-height:1.5;color:#c8d0d4}
+@media(hover:hover) and (pointer:fine){.walk-zoom:hover img{transform:scale(1.025)}}
+@media(max-width:650px){.walk-route{grid-template-columns:1fr;gap:24px}.walk-zoom{border-radius:10px}.walk-photo figcaption{font-size:13px;margin-top:10px}.club-walk .section-heading h2{font-size:42px}}
+@media(prefers-reduced-motion:reduce){.walk-zoom img{transition:none;transform:none!important}}
+
 /* liquid-glass.css */
 /* Liquid Glass finish for the published composition. */
 :root{--glass-fill:linear-gradient(125deg,#e5f5ff28,#c6e5ff0c 46%,#c8e6ff20);--glass-edge:1px solid #e9f6ff70;--glass-shadow:inset 0 1px 0 #ffffffa3,inset 1px 0 1px #ffffff35,inset 0 -1px 1px #ffffff26,0 8px 30px #00162630}
@@ -892,3 +905,27 @@ p.visitor-contact{font-size:14px;line-height:1.7;margin:16px 0 0;max-width:100%}
 .kit-view-option {min-height:44px;padding:12px 22px;border:1px solid #dfd8c680;border-radius:28px;background:#1b303b;color:#f3f0e7;font:500 14px/1.4 Manrope,sans-serif;cursor:pointer;}
 .kit-view-option[aria-pressed=true] {background:#dfd8c6;color:#101820;border-color:#dfd8c6;}
 .kit-view-option:hover {border-color:#dfd8c6;}
+
+/* A compact closing invitation, using the collection itself as its backdrop. */
+.equipment-page .shop-contact {
+ position:relative;isolation:isolate;display:flex;justify-content:center;align-items:center;
+ margin:24px 3.33% 64px;padding:68px 32px;min-height:340px;overflow:hidden;
+ border:1px solid #dfd8c62e;border-radius:16px;text-align:center;background:#10212b;
+}
+.shop-contact::before {content:"";position:absolute;inset:0;z-index:-2;background:url('assets/kit-blue.jpeg') center 48%/cover no-repeat;opacity:.4;}
+.shop-contact::after {content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0d2029c9,#0d2029e8 35%,#0d2029e8 65%,#0d2029c9);}
+.shop-contact-copy {width:100%;max-width:760px;}
+.equipment-page .shop-contact h2 {font-size:clamp(38px,4.5vw,64px);line-height:1.12;margin:0 0 22px;color:#dfd8c6;}
+.equipment-page .shop-contact p {max-width:49ch;margin:0 auto 30px;font-size:16px;line-height:1.65;color:#dce3e5;}
+.equipment-page .shop-contact .ui-button {background:#dfd8c6;border-color:#dfd8c6;color:#10212b;padding:14px 24px;gap:20px;box-shadow:none;}
+.shop-contact .ui-button span {font-size:22px;line-height:1;}
+.equipment-page .shop-contact .ui-button:hover {background:#f1ecdf;color:#10212b;}
+@media(max-width:700px){
+ .equipment-page .shop-contact {margin:16px 20px 40px;padding:40px 24px;min-height:0;}
+ .equipment-page .shop-contact h2 {font-size:38px;}
+ .equipment-page .shop-contact p {font-size:15px;}
+ .shop-contact::before {background-size:auto 100%;opacity:.32;}
+}
+body.equipment-page .shop-contact>.shop-contact-copy {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;}
+body.equipment-page .shop-contact h2 {max-width:none;}
+body.equipment-page .shop-contact>.shop-contact-copy>p {margin:0 auto 30px;}
