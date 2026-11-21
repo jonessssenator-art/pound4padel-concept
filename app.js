@@ -86,7 +86,7 @@ viewer.querySelector('img').addEventListener('touchstart',e=>{swipeStart=e.touch
 viewer.querySelector('img').addEventListener('touchend',e=>{if(!swipeStart||galleryControls.hidden)return;const dx=e.changedTouches[0].clientX-swipeStart.x,dy=e.changedTouches[0].clientY-swipeStart.y;swipeStart=null;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.5)showGallery(galleryIndex+(dx<0?1:-1));},{passive:true});
 document.querySelectorAll('[data-format-choice]').forEach(a=>a.addEventListener('click',e=>{const tab=document.getElementById('tab-'+a.dataset.formatChoice);if(!tab)return;e.preventDefault();selectTab(tab,e.detail>0);tab.focus({preventScroll:true});document.querySelector('#play').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});}));
 viewer.querySelector('.dialog-close').addEventListener('click',()=>viewer.close());viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close();}});viewer.addEventListener('close',()=>{document.body.style.overflow='';viewerTrigger?.focus();});
-document.querySelectorAll('.view-option').forEach(button=>button.addEventListener('click',async()=>{const img=document.getElementById(button.dataset.target);button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));img.src=button.dataset.src;img.alt=button.dataset.alt;img.closest('.zoom-image').dataset.image=button.dataset.detailImage||button.dataset.src;if(button.dataset.detailCaption)img.closest('.zoom-image').dataset.caption=button.dataset.detailCaption;if(button.dataset.label)document.querySelector('#kit-caption').textContent=button.dataset.label;try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.2,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:280,easing:'cubic-bezier(.23,1,.32,1)'});}));
+document.querySelectorAll('.view-option:not(.kit-color)').forEach(button=>button.addEventListener('click',async()=>{const img=document.getElementById(button.dataset.target);button.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));img.src=button.dataset.src;img.alt=button.dataset.alt;const zoom=img.closest('.zoom-image');if(zoom){zoom.dataset.image=button.dataset.detailImage||button.dataset.src;if(button.dataset.detailCaption)zoom.dataset.caption=button.dataset.detailCaption;}if(img.id==='racket-view'){const point=document.querySelector('#racket .detail-point');point.hidden=!button.dataset.src.endsWith('racket-front.png');point.setAttribute('aria-expanded','false');point.firstElementChild.textContent='+';document.getElementById('detail-carbon').hidden=true;}if(button.dataset.label)document.querySelector('#kit-caption').textContent=button.dataset.label;try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.2,transform:'scale(.97)'},{opacity:1,transform:'scale(1)'}],{duration:280,easing:'cubic-bezier(.23,1,.32,1)'});}));
 document.querySelector('.detail-point')?.addEventListener('click',e=>{const b=e.currentTarget;const open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(open));document.getElementById(b.getAttribute('aria-controls')).hidden=!open;b.firstElementChild.textContent=open?'−':'+';});
 document.querySelectorAll('.space-view').forEach(b=>b.addEventListener('click',async()=>{const img=document.querySelector('.space>img');img.src=b.dataset.src;img.alt=b.textContent==='Открытие'?'Фотография с открытия POUND4PADEL':'Вход в клуб POUND4PADEL';document.querySelectorAll('.space-view').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));try{await img.decode();}catch{}img.getAnimations().forEach(a=>a.cancel());if(!reduced.matches&&document.documentElement.dataset.input!=='keyboard')img.animate([{opacity:.35,transform:'scale(1.025)'},{opacity:1,transform:'scale(1)'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});}));
 const progress=document.createElement('div');progress.className='progress-bar';progress.setAttribute('aria-hidden','true');document.body.append(progress);
@@ -103,3 +103,20 @@ if (['start','friends','practice'].includes(requestedFormat)) {
 if (document.body.classList.contains('home-page') && ['#play','#first','#availability'].includes(location.hash)) {
   location.replace('club.html' + location.hash);
 }
+
+// Kit color and view are independent; changes stay inside the product card.
+(()=>{
+ const kit=document.querySelector('#kit');if(!kit)return;
+ const img=kit.querySelector('#kit-view'),colors=[...kit.querySelectorAll('.kit-color')],views=[...kit.querySelectorAll('[data-kit-view]')];
+ let color=colors.find(b=>b.getAttribute('aria-pressed')==='true')||colors[0],view='general';
+ function render(){
+  const detail=view==='detail';
+  img.src=detail?color.dataset.detailImage:color.dataset.src;
+  img.alt=detail?color.dataset.detailCaption:color.dataset.alt;
+  kit.querySelector('#kit-caption').textContent=color.dataset.label;
+  colors.forEach(b=>b.setAttribute('aria-pressed',String(b===color)));
+  views.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.kitView===view)));
+ }
+ colors.forEach(b=>b.addEventListener('click',()=>{color=b;render();}));
+ views.forEach(b=>b.addEventListener('click',()=>{view=b.dataset.kitView;render();}));
+})();

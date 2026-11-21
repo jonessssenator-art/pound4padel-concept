@@ -11,10 +11,6 @@
 .kit-showcase .visitor-actions {grid-column:1;grid-row:2;padding:0 0 0 48px;margin:0;}
 .kit-showcase .visitor-contact {grid-column:1;grid-row:3;padding:12px 0 40px 48px;margin:0;font-size:12px;}
 .kit-showcase .media-action {bottom:28px;}
-.equipment-racket-details {grid-template-columns:minmax(0,1fr);}
-.equipment-racket-details .racket-card {display:grid;grid-template-columns:1fr 1fr;column-gap:40px;align-items:center;}
-.equipment-racket-details .product-window {grid-column:1;grid-row:1/4;}
-.equipment-racket-details .racket-card>figcaption,.equipment-racket-details .racket-card>.visitor-actions,.equipment-racket-details .racket-card>.visitor-contact {grid-column:2;}
 .branches-pending {min-height:65svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding-block:80px;}
 .branches-pending p {font-size:18px;color:#dfd8c6;margin:0;}
 .branches-pending h1 {font-size:clamp(48px,8vw,100px);line-height:1.1;margin:0 0 12px;}
@@ -26,9 +22,34 @@
  .equipment .kit-showcase .product-window {order:1;height:440px;}
  .kit-showcase .visitor-actions {order:2;padding:0 24px;}
  .kit-showcase .visitor-contact {order:3;padding:12px 24px 28px;}
- .equipment-racket-details .racket-card {display:block;}
-}
+ }
 
 /* Keep color swatches true to the fabric even when selected. */
 .kit-showcase .swatches .cream {background:#dfd8c6;color:#183269;}
 .kit-showcase .swatches .blue {background:#204b99;color:#fff;}
+
+/* One racket presentation contains its description, views and contact action. */
+.equipment-page .racket-showcase .racket-intro {position:relative;z-index:2;width:44%;padding:40px 0 40px 48px;}
+.equipment-page .racket-showcase .racket-intro h3 {font-size:clamp(36px,3.8vw,58px);line-height:1.15;margin-bottom:24px;}
+.racket-showcase .product-options {display:flex;flex-wrap:wrap;gap:10px;margin:28px 0;}
+.racket-showcase .view-option {color:#183269;border-color:#18326955;background:transparent;}
+.racket-showcase .view-option[aria-pressed=true] {color:#fff;background:#183269;}
+.racket-showcase .racket-contact {margin-top:12px;}
+@media(max-width:700px){
+ .equipment-page .racket-showcase {height:auto;display:flex;flex-direction:column;padding-bottom:24px;}
+ .equipment-page .racket-showcase .racket-intro {width:100%;padding:28px 24px 0;}
+ .equipment-page .racket-showcase .racket-intro h3 {font-size:36px;margin-bottom:16px;}
+ .equipment-page .racket-showcase>img {position:static;width:100%;height:360px;object-fit:contain;margin-top:24px;}
+ .racket-showcase .product-options {margin:20px 0;}
+ .racket-showcase .detail-point {top:auto;bottom:210px;left:54%;}
+ .racket-showcase .detail-note {top:auto;bottom:70px;}
+}
+.racket-showcase .detail-point[hidden] {display:none;}
+
+.equipment .kit-showcase .product-window {position:relative;overflow:hidden;}
+.kit-showcase .kit-media {height:calc(100% - 76px);width:100%;}
+.equipment .kit-showcase .kit-media img {width:100%;height:100%;object-fit:contain;transform:none;}
+.kit-showcase .kit-view-options {position:absolute;bottom:24px;left:0;right:0;display:flex;justify-content:center;gap:10px;}
+.kit-view-option {min-height:44px;padding:12px 22px;border:1px solid #dfd8c680;border-radius:28px;background:#1b303b;color:#f3f0e7;font:500 14px/1.4 Manrope,sans-serif;cursor:pointer;}
+.kit-view-option[aria-pressed=true] {background:#dfd8c6;color:#101820;border-color:#dfd8c6;}
+.kit-view-option:hover {border-color:#dfd8c6;}
