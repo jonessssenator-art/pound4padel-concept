@@ -1,0 +1,32 @@
+/* Practical visitor information within the approved visual language. */
+.visitor-guide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:64px;background:#111f29;align-items:start}
+.visitor-guide h2{font-size:clamp(42px,4.8vw,72px);line-height:1.14;margin-bottom:24px}
+.visitor-guide p,.visitor-guide dd{font-size:16px;line-height:1.75;max-width:56ch;color:#c8d0d4}
+.visitor-facts{margin:0}
+.visitor-facts>div+div{margin-top:24px;padding-top:24px;border-top:1px solid #f3f0e726}
+.visitor-facts dt{font-size:19px;font-weight:600;margin-bottom:8px}
+.visitor-facts dd{margin:0}
+.visitor-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:24px}
+.visitor-actions .ui-button{white-space:normal;text-align:center;line-height:1.5;max-width:100%;min-height:48px}
+.visitor-text-link{display:inline-block;text-decoration:underline;text-underline-offset:5px;line-height:1.65;padding-block:10px}
+p.visitor-contact{font-size:14px;line-height:1.7;margin:16px 0 0;max-width:100%}
+.visitor-contact a{display:inline-block;white-space:nowrap;text-decoration:underline;text-underline-offset:4px;padding-block:8px}
+.play .panel .visitor-contact{font-size:13px;margin-top:8px}
+.equipment-grid figure>.visitor-actions{padding-inline:0;margin-top:24px}
+.equipment-grid figure>.visitor-contact{margin-top:8px}
+#project-contact{background:#111f29;color:#f3f0e7}
+#project-contact p{color:#c8d0d4}
+#project-contact .visitor-contact a{color:#f3f0e7}
+#project-contact .ui-button{background:#f3f0e7;color:#183269;border-color:#f3f0e7}
+#project-contact :focus-visible{outline-color:#deeb7c}
+@media(max-width:1050px){.visitor-guide{gap:32px}}
+@media(max-width:650px){
+ .visitor-guide{grid-template-columns:1fr;gap:28px}
+ .visitor-guide h2{font-size:42px;margin-bottom:20px}
+ .visitor-guide p,.visitor-guide dd{font-size:15px}
+ .visitor-actions{gap:12px;margin-top:20px}
+ .visitor-actions .ui-button{width:100%;font-size:14px}
+ .visitor-contact a{min-height:44px}
+ .play .panel .visitor-actions{gap:4px}
+ .play .panel .visitor-contact{margin:0}
+}
