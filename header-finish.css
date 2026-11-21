@@ -1,0 +1,59 @@
+/* A restrained glass capsule; retain its original footprint and centred mark. */
+html[data-chrome=compact] body .header{
+ background:linear-gradient(115deg,rgba(37,61,77,.92),rgba(14,34,47,.94));
+ border:1px solid rgba(223,216,198,.32);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 8px 24px rgba(0,0,0,.16);
+ backdrop-filter:blur(20px) saturate(1.15);-webkit-backdrop-filter:blur(20px) saturate(1.15);
+}
+html[data-chrome=compact] body .header .brand,
+html[data-chrome=compact] body .header .brand img{width:156px}
+html[data-chrome=compact] body .header .menu{
+ left:16px;top:16px;transform:none;display:flex;flex-direction:row;align-items:center;justify-content:center;
+ gap:12px;width:112px;height:44px;padding:0 16px;border:1px solid rgba(223,216,198,.16);border-radius:24px;
+ background:rgba(223,216,198,.045);color:#dfd8c6;cursor:pointer;
+ transition:background 160ms ease,border-color 160ms ease;
+}
+html[data-chrome=compact] body .header .menu-lines{display:flex;flex-direction:column;gap:6px;width:20px;flex:none}
+html[data-chrome=compact] body .header .menu-lines span{width:20px;height:1px;background:currentColor}
+html[data-chrome=compact] body .header .menu-label{font:500 13px/1 Manrope,sans-serif;letter-spacing:0;text-transform:none}
+html[data-chrome=compact] body .header .header-cta{
+ top:16px;right:16px;height:44px;min-height:44px;max-width:none;padding:0 20px;gap:9px;
+ border:1px solid #dfd8c6;border-radius:24px;background:#dfd8c6;color:#152c3c;
+ box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;font:600 13px/1 Manrope,sans-serif;
+ white-space:nowrap;transition:background 160ms ease,border-color 160ms ease;
+}
+html[data-chrome=compact] body .header .header-cta svg{width:16px;height:16px;flex:none}
+html[data-chrome=compact] body .header #navigation.motion-nav{
+ top:88px;display:grid;grid-template-columns:1fr 1fr;gap:0 28px;padding:26px 30px;
+ border-radius:24px;border:1px solid rgba(223,216,198,.26);
+ background:rgba(15,34,46,.98);box-shadow:0 18px 40px rgba(0,0,0,.24);
+}
+html[data-chrome=compact] body .header #navigation.motion-nav :is(.nav-left,.nav-right){gap:4px}
+html[data-chrome=compact] body .header #navigation.motion-nav .nav-right{grid-column:2;border-left:1px solid rgba(223,216,198,.14);padding-left:28px}
+html[data-chrome=compact] body .header #navigation.motion-nav a{
+ padding:14px 16px;font-size:30px;font-weight:400;line-height:1.2;color:#dfd8c6;border-radius:12px;
+}
+html[data-chrome=compact] body .header #navigation.motion-nav a[aria-current=page]{color:#dfd8c6;background:rgba(223,216,198,.09)}
+html[data-chrome=compact] body .header :is(a,button):focus-visible{outline:2px solid #dfd8c6;outline-offset:4px}
+@media(hover:hover) and (pointer:fine){
+ html[data-chrome=compact] body .header .menu:hover{background:rgba(223,216,198,.10);border-color:rgba(223,216,198,.35)}
+ html[data-chrome=compact] body .header .header-cta:hover{background:#eee8db;border-color:#eee8db;color:#152c3c;box-shadow:none}
+ html[data-chrome=compact] body .header #navigation.motion-nav a:hover{color:#fff6e5;background:rgba(223,216,198,.10)}
+}
+@media(max-width:650px){
+ html[data-chrome=compact] body .header .brand,
+ html[data-chrome=compact] body .header .brand img{width:112px}
+ html[data-chrome=compact] body .header .menu{left:10px;top:11px;width:44px;height:44px;padding:0;border-color:transparent;background:transparent}
+ html[data-chrome=compact] body .header .menu-label{display:none}
+ html[data-chrome=compact] body .header .header-cta{top:11px;right:10px;height:44px;padding:0 12px;font-size:11px;min-height:44px;width:auto;max-width:none}
+ html[data-chrome=compact] body .header .header-cta svg{display:none}
+ html[data-chrome=compact] body .header #navigation.motion-nav{top:76px;grid-template-columns:1fr;gap:0;padding:16px;max-height:calc(100dvh - 112px)}
+ html[data-chrome=compact] body .header #navigation.motion-nav .nav-right{grid-column:1;border-left:0;border-top:1px solid rgba(223,216,198,.14);padding-left:0;padding-top:8px;margin-top:8px}
+ html[data-chrome=compact] body .header #navigation.motion-nav a{font-size:26px;padding:12px 14px}
+}
+@media(max-width:380px){
+ html[data-chrome=compact] body .header .brand,
+ html[data-chrome=compact] body .header .brand img{width:82px}
+ html[data-chrome=compact] body .header .header-cta{font-size:10px;padding:0 7px;right:8px}
+}
+@media(prefers-reduced-motion:reduce){html[data-chrome=compact] body .header :is(.menu,.header-cta){transition:none}}
