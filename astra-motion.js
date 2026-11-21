@@ -44,7 +44,9 @@
   const nav=document.querySelector('#navigation'), menu=document.querySelector('.menu');
   if(nav&&menu&&document.documentElement.dataset.chrome==='compact'){
     nav.classList.add('motion-nav');
-    function sync(){nav.inert=menu.getAttribute('aria-expanded')!=='true';}
+    const desktopNav=matchMedia('(min-width: 1200px)');
+    function sync(){nav.inert=!desktopNav.matches&&menu.getAttribute('aria-expanded')!=='true';}
+    desktopNav.addEventListener('change',()=>{closeMenu();sync();});
     menu.addEventListener('click',event=>{if(event.detail===0&&menu.getAttribute('aria-expanded')==='true'){nav.inert=false;nav.querySelector('a')?.focus();}});
     sync();new MutationObserver(sync).observe(menu,{attributes:true,attributeFilter:['aria-expanded']});
     document.addEventListener('pointerdown',event=>{if(menu.getAttribute('aria-expanded')==='true'&&!event.target.closest('.header'))closeMenu();});

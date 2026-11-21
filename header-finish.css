@@ -57,3 +57,27 @@ html[data-chrome=compact] body .header :is(a,button):focus-visible{outline:2px s
  html[data-chrome=compact] body .header .header-cta{font-size:10px;padding:0 7px;right:8px}
 }
 @media(prefers-reduced-motion:reduce){html[data-chrome=compact] body .header :is(.menu,.header-cta){transition:none}}
+
+/* Full-width navigation with a viewport-centred logo. */
+html[data-chrome=compact] body .header { max-width: none; }
+@media(min-width:1200px) {
+ html[data-chrome=compact] body .header .menu { display:none; }
+ html[data-chrome=compact] body .header #navigation,
+ html[data-chrome=compact] body .header #navigation.motion-nav {
+  position:absolute;inset:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 200px minmax(0,1fr);
+  align-items:center;gap:0;padding:0;margin:0;max-height:none;overflow:visible;
+  border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;
+  visibility:visible;opacity:1;transform:none;transition:none;pointer-events:none;
+ }
+ html[data-chrome=compact] body .header #navigation.motion-nav :is(.nav-left,.nav-right) {
+  display:flex;flex-direction:row;align-items:center;gap:clamp(12px,2vw,36px);border:0;margin:0;padding:0;
+ }
+ html[data-chrome=compact] body .header #navigation.motion-nav .nav-left { grid-column:1;justify-content:flex-start; }
+ html[data-chrome=compact] body .header #navigation.motion-nav .nav-right { grid-column:3;justify-content:flex-end;padding-right:190px; }
+ html[data-chrome=compact] body .header #navigation.motion-nav a {
+  display:inline-flex;align-items:center;min-height:44px;padding:8px 4px;
+  font:500 14px/1.4 Manrope,sans-serif;white-space:nowrap;pointer-events:auto;border-radius:0;color:#dfd8c6;
+ }
+ html[data-chrome=compact] body .header #navigation.motion-nav a[aria-current=page] {background:none;text-decoration:underline;text-underline-offset:7px;}
+ html[data-chrome=compact] body .header #navigation.motion-nav a:hover {background:none;color:#fff6e5;}
+}
